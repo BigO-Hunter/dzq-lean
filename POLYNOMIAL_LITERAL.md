@@ -93,7 +93,7 @@ unchanged. All hashes are in `branches2.json`
 | `branches2.json` — every leaf's term count, degrees, hash | `097cc10e83985ba97474c25686f97a5408b0aac98e8ab126d53ae047073813e6` |
 | `perprime.json` — nine constant rows + checks | `b523be5f632aa476cc25ae3b7ded0a2c8cc1e8d82d7151a2d2703759f9e93ebe` |
 | `e_exc.json` — E_exc derivation | `dc523137e3d4e12bddeb2c44876011f911f9b123497a7727a3c89cfe25810b3a` |
-| `TAU.json` — per-cell frozen data (still valid; superseded Λ noted in `E_EXC.md`) | `df2307858a606bf37bb293b66ea7cdf356ce24d06cb413c87fb65d0d055895d9` |
+| `TAU.json` — per-cell frozen data (still valid; superseded Λ noted in `E_EXC.md`) | `8abc4350a5fb6bca01fb49bd945fbb178ee47986774661f2ae7a66a6b75392ed` |
 | `measurements.json` — every number in `VERIFICATION.md` | `74c04e6757d485ce7d26391d83e264493499753f4198d6e0bfe884aacebf2cb3` |
 
 ## 4. Why there is still no single expanded term list

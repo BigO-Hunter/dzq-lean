@@ -87,6 +87,15 @@ def main():
             "y_witness": "the (2.1) witness y = 4Y + t_p*c (NOT Y: G1_FREEZING.md conflates them)",
             "truncation": "binary 64-bit rational truncation of the 2-adic value",
         },
+        "lambda_final": {
+            "class_A": {"set": "v_2(c) <= 2 (c not = 0 mod 8)", "taus": [1, 17, 33, 49],
+                        "note": "4 parameters per class as Sun requires; all verified to serve the "
+                                "whole class exhaustively"},
+            "class_B": {"set": "v_2(c) >= 2 (c = 0 mod 4)", "taus": [3, 11, 19, 27]},
+            "size": 8,
+            "supersedes": "the 2-value map (tau = 1 / tau = 3) of the previous pass, which is enough "
+                          "to COVER P_2 but not enough for Sun's four-residues-per-class argument",
+        },
         "counts": {
             "cells_mod8": len(cells),
             "claim_G1_Lambda_le": 512,

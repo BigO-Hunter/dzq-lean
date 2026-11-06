@@ -2044,6 +2044,29 @@
    3
   ]
  },
+ "lambda_final": {
+  "class_A": {
+   "note": "4 parameters per class as Sun requires; all verified to serve the whole class exhaustively",
+   "set": "v_2(c) <= 2 (c not = 0 mod 8)",
+   "taus": [
+    1,
+    17,
+    33,
+    49
+   ]
+  },
+  "class_B": {
+   "set": "v_2(c) >= 2 (c = 0 mod 4)",
+   "taus": [
+    3,
+    11,
+    19,
+    27
+   ]
+  },
+  "size": 8,
+  "supersedes": "the 2-value map (tau = 1 / tau = 3) of the previous pass, which is enough to COVER P_2 but not enough for Sun's four-residues-per-class argument"
+ },
  "lane": "dzq-exec",
  "method": {
   "Y": "i-coordinate of z1 = (c1 + sqrt(c1^2-4))/2 in K(i), i^2 = A",
