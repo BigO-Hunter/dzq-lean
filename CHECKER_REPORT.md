@@ -90,6 +90,14 @@ Chain connectivity, all measured:
 - peak allocation 5,365 variables → 4,973 active columns after compaction (392 allocated
   coordinates vanish)
 
+**Boundary of this S5 claim, stated precisely:** each op is verified *locally* (its patch is
+exactly what its declared operation produces from the pre-op rows), and the repaired chain is shown
+to terminate in the shipped residual set. The *global* statement the release makes — that the
+composition is an exact projection-preserving equivalence onto the input coordinate, in both
+directions — is implied by these op kinds all being invertible rational substitutions, but this
+checker does not mechanize that composition argument. Local correctness of 550 steps plus exact
+row-level connectivity is what is measured here.
+
 ## S6 — the easy direction (q ∈ Z ⇒ ∃ rational w with Φ(q,w)=0) — **NOT-REACHED**
 
 What is established here: Φ ≥ 0 and Φ = 0 ⟺ all 4,552 residuals vanish (EXACTLY-CHECKED, S3),
