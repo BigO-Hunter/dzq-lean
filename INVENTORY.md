@@ -24,6 +24,14 @@ is missing; the full archive adds history only.
 **GAP**: `quartic_4973.pdf` (1,164,209 B) not downloaded — the `.tex` source is authoritative and
 the release ships both.
 
+**GAP**: the producer's own reproducer (`reproducibility/run.py`) was **not** run. It is
+deliberately Linux-only and refuses to start elsewhere:
+`reproducibility/run.py:74  need(sys.platform.startswith('linux'),'Linux process controls
+required')`, plus `/proc/meminfo` and `prctl(PR_SET_PDEATHSIG)` in `child_setup()`. This host is
+macOS, so the generator cannot execute here. Consequence: this lane verifies the two independent
+representations the release ships (the 72,925-term list and Σ R_i²) against each other, and does
+not regenerate either from `source/`.
+
 ## ZIP contents (v4 current-only)
 
 1,385 files, 81,861,645 B uncompressed, under `current/` and `history/`:

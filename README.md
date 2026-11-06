@@ -74,3 +74,7 @@ hash is pinned in `INVENTORY.md` and inside `CHECKER_REPORT.md`.
 - The `parity_conic` transform's bespoke justification rule (1 of 551 ops) — its patch is applied
   and its consequences are covered by S3, but its derivation is not re-checked.
 - Lean, and the `full-handoff` ZIP's history payloads (see GAPs in `INVENTORY.md`).
+- Regenerating the polynomial from `source/`: the release's `reproducibility/run.py` is Linux-only
+  by construction (`need(sys.platform.startswith('linux'),'Linux process controls required')`), so
+  it refuses to run on this macOS host. Verification here is between the two representations the
+  release already ships, which is the algebraic content the reproducer would reproduce.
