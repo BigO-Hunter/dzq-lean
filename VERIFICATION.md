@@ -66,6 +66,8 @@ The **128-cell count** is arithmetically right (4·4·8 = 128), but note: at r =
 equation does not involve b at all (B = 2b enters only through the norm group, which is the whole
 even-valuation set, and 2b is a unit times 2 — the parity is unchanged). So the *local* cell
 count is 32, not 128, and the b-residue is decoration. That is a looseness, not an error.
+Machine-checked (`extra_checks.py (b)`): the ψ_τ verdict is **identical for all eight unit b
+values** {1,3,5,7,−1,−3,9,15} on 3,000 random points, 0 disagreements.
 
 ## 2. The valuation facts — verdicts
 
@@ -76,7 +78,7 @@ Exact measurements over 12,800 perturbation points (a ≡ a₀ mod 8, c ≡ c₀
 |---|---|---|---|
 | I1 | v(ΔA) ≥ 6 | min **6** (6:6425, 7:3238, 8:1563, …) | **VERIFIED-COMPUTATIONALLY** (and by the elementary argument: v(4)+v(a−a₀)+v(a+a₀) = 2+3+1) |
 | I2 | v(Δδ_τ) ≥ 6 | min **4** (4:6400, 5:3200, 6:1565, …) | **FAILS** |
-| I3 | v(Δc²) ≥ 4 (c₀ odd) / 5 (c₀ even) | min **4** | **VERIFIED-COMPUTATIONALLY** |
+| I3 | v(Δc²) ≥ 4 (c₀ odd) / 5 (c₀ even) | min **4** for c₀ odd, **5** for c₀ even (`extra_checks.py (a)`) | **VERIFIED-COMPUTATIONALLY** |
 | I4a | v(ΔP) ≥ 6 | min **6** | **VERIFIED-COMPUTATIONALLY** |
 | I4b | v(ΔP) ≥ 6 **> 2e = 4** | 6 > 2e holds on only **3,608/12,800** points | **FAILS** |
 | I5a | v(Δ(∂P/∂y)) ≥ 6 | min **5** | **FAILS** |
@@ -173,7 +175,8 @@ So **τ = 1 if c ≢ 0 mod 4, τ = 3 if c ≡ 0 mod 4** serves *every* point of 
 
 * full grid a ≡ a₀ mod 8, c ≡ c₀ mod 8 over mod 2^10 — **0 / 524,288 obstructed**;
 * 60,000 random points with unbounded 2-adic depth (|a|,|c| ≤ 2^20 plus the three c-classes) — **0 failures**, both by the criterion and by the constructive case check (including explicitly constructing y = √w and verifying δ(c²−Ay²) = 16 for every c-odd point);
-* 2,000 random c-odd points with an explicit witness — 2000/2000.
+* 2,000 random c-odd points with an explicit witness — 2000/2000;
+* δ_τ ≠ 0 holds automatically for the map, with v(δ_τ) = 2 exactly: 0 violations in 20,000 deep random points (`extra_checks.py (c)`).
 
 Note the map depends only on c mod 4: the freezing datum is coarser, not finer, than mod 8 — the
 construction was simply aiming at the wrong τ.
