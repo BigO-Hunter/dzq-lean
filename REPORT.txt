@@ -6,6 +6,6 @@ STRUCTURE: Φ=Σw_iR_i² EXACTLY-CHECKED — 72,925 both sides, 0 diffs, same co
 
 EASY DIRECTION NOT-REACHED: Φ≥0 exact; all-zero not a witness (const 1900333570565983); forward substitution gives 34/4,973 vars, so q↦w is not in the artifact; per-q existence = source arithmetic theorem, release scopes out. 27/121 elims + both shears non-integral, consistent with "rational zero projection exactly Z", not a finding.
 
-ARTIFACT: artifacts/phi-4973.canonical.txt.gz 334,290B, sha d9a51267; variants re-verify via --termlist; control arms 5/5 caught.
+ARTIFACT: phi-4973.canonical.txt.gz 334,290B, sha d9a51267; variants re-verify via --termlist; control arms 5/5 caught.
 
-GAPS: 371MB full zip + PDF skipped (history/tex fine); run.py Linux-only (:74), no generator re-run. Smell: none.
+GAPS: 371MB full zip + PDF skipped; run.py Linux-only (:74), no generator re-run. Smell: none.
