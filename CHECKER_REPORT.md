@@ -1,6 +1,10 @@
 # CHECKER REPORT — quartic-4973 (Version 4)
 
 Independent checker: `checker.py` (stdlib only, ~700 lines, imports no producer module).
+Provenance note: the *mathematics* is re-implemented here, but the *interpretation* of each
+transform event's `data` fields was decoded from the shipped `verify_certificate.py` (the release's
+own published spec for its certificate format) — matching a specified serialization is not the
+same as trusting the producer's verdict, and every number below is recomputed from bytes.
 Inputs: the shipped bytes listed in `INVENTORY.md`. Reproduce with `python3 checker.py
 --package work/current/quartics/quartic-4973 --json out.json`; control arms with
 `python3 control_arms.py --package …`.
