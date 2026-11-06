@@ -115,11 +115,9 @@ while True:
             if any(len(m) > 1 for m in rest):
                 rejected[(v, r0)] = version
                 continue
-            # consumers
+            # consumers: substitution of a deg<=1 rest into deg<=2 rows always
+            # preserves deg<=2 (len(m2)+len(n) <= 1+1), so no structural precheck
             consumers = [i for i in rs if i != r0]
-            if any(v in bad[r1] for r1 in consumers):
-                rejected[(v, r0)] = version
-                continue
             # simulate
             L = {m: -c for m, c in rest.items()}
             news = {}

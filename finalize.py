@@ -26,8 +26,7 @@ for row in rows:
             acc[mm] += c1 * c2
     maxrow = max(maxrow, max(abs(c) for _, c in items))
 acc = {m: c for m, c in acc.items() if c}
-terms = sorted(acc.items(), key=lambda kv: [(v, e) for v, e in kv[0]])
-allv = sorted({v for m in acc for (v, e) in [(x, 1) for x in m]})
+terms = sorted(acc.items(), key=lambda kv: kv[0])
 allv = sorted({v for m in acc for v in m})
 print(f"monomials: {len(acc)}, degree: {degmax}, max |Phi coeff|: {abs(max(acc.values(), key=abs)).bit_length()} bits, max |row coeff|: {maxrow.bit_length()} bits")
 print(f"distinct vars in Phi: {len(allv)}, max idx: {allv[-1]}, contiguous 0..{len(allv)-1}: {allv == list(range(len(allv)))}")
