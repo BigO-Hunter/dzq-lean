@@ -36,19 +36,21 @@ def G_poly():
 
 
 def N_poly():
-    """N = a^2 z^2 G with z = X^3"""
+    """N = a^2 z^2 G with z = iota^3.
+
+    iota is the inversion witness (X*iota = 1): the polynomial defines (U m_w)^{-1}, i.e. the set
+    Q \ Z, so the h-bridge variable x of Sun (9.1) is iota, not X.  See POLYNOMIAL_LITERAL.md 2.
+    """
     a = SPoly.var(NV, A_)
-    Xv = SPoly.var(NV, X)
-    z = Xv ** 3
+    z = SPoly.var(NV, IO) ** 3
     return (a ** 2) * (z ** 2) * G_poly()
 
 
 def D_poly():
-    """D = (1+4a^2) b^2 (1 - z - a^2 z^2), z = X^3"""
+    """D = (1+4a^2) b^2 (1 - z - a^2 z^2), z = iota^3"""
     a = SPoly.var(NV, A_)
     b = SPoly.var(NV, B_)
-    Xv = SPoly.var(NV, X)
-    z = Xv ** 3
+    z = SPoly.var(NV, IO) ** 3
     return A_poly() * (b ** 2) * (SPoly.const(NV, 1) - z - (a ** 2) * (z ** 2))
 
 

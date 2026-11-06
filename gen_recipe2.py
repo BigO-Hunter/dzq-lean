@@ -4,7 +4,7 @@ every constant instantiated.
 import hashlib
 import json
 
-from F_eval import E_EXC, LAMBDA, PATCH
+from F_eval import E_EXC, LAMBDA, PATCH, PATCH_PRIMES
 
 PI, U = 2, 1
 CLASS_A = [1, 17, 33, 49]
@@ -57,19 +57,27 @@ def main():
                                          "q": pp[str(p)]["q"], "d": pp[str(p)]["d"],
                                          "Delta": pp[str(p)]["Delta"]}
                                 for (p, pi_p, A_p, B_p, a_p) in PATCH},
-            "patch_p2_control": {"constants": {k: pp["2"][k] for k in ("A", "B", "a", "q", "d", "pi")},
-                                 "in_patch": False,
-                                 "why": "E_exc is a subset of V_K minus S and S = {2}; m_2 lies inside "
-                                        "Z_(2), so a p = 2 factor would wrongly admit even integers. "
-                                        "The p = 2 constants pass the same hypothesis checker and "
-                                        "are kept only as a control arm."},
-            "patch_constant_term_note": "F_p = pi_p X^2 G_p - p^2.  The argument of the O_(p) formula "
-                                        "is X/p because m_p = p*O_p, so the cleared constant term is "
-                                        "p^2 (an earlier draft of this lane used -1, which defines "
-                                        "Z_(p) rather than m_p; corrected here).",
+            "patch_set": {
+                "value": list(PATCH_PRIMES),
+                "why": "the polynomial defines U_{w in V_K minus S0} m_w with the prescribed S0 = "
+                       "empty: Q \\ Z = {X : 1/X in U_{all w} m_w}.  The freezing construction "
+                       "uses S = {2}, so Sun's return step (9.4) adjoins U_{v in S minus S0} m_v = "
+                       "m_2.  Patch set = E_exc u {2}.",
+                "confirmed_by_smoke": "X = 3/10 needs the p = 2 factor (v_2 = -1); integers need "
+                                      "none -- see SMOKE2.md",
+            },
+            "substitution_note": {
+                "h_bridge_variable": "iota, not X: the polynomial defines the INVERSE image of "
+                                     "U m_w (Sun (1.1) duality), so Sun's x is iota with X*iota = 1",
+                "patch": "F_p = pi_p G_p - p^2 X^2.  The O_(p) formula is applied to x = 1/(pX), so "
+                         "pi x^2 G = 1 clears to pi G = p^2 X^2.  The earlier draft's "
+                         "pi X^2 G - p^2 encodes X in m_p instead -- the wrong side of the duality.",
+                "why_it_matters": "U_w m_w is a proper subset of Q minus Z (e.g. 1/3 is in Q minus Z "
+                                  "but in no m_w), so the un-inverted reading defines too small a set",
+            },
         },
         "formulas": {
-            "A": "1 + 4*a^2", "z": "X^3",
+            "A": "1 + 4*a^2", "z": "iota^3",
             "G": "16*a^4*b^2 - (b-1)^4*(1+4*a^2)",
             "N": "a^2*z^2*G", "D": "(1+4*a^2)*b^2*(1 - z - a^2*z^2)", "B": "b*pi = 2*b",
             "delta_tau": "1 - A*tau^2",
@@ -78,7 +86,7 @@ def main():
             "F_Phi": "(b*b1 - 1 - sigma*Pi_S)^2 + (a - u - upsilon*Pi_S)^2",
             "F_Theta": "prod over tau in Lambda of [(delta_tau*zeta - 1)^2 + Phat_tau^2 + ((D*zeta' - 1)*P0_tau)^2]",
             "F_main": "F_Phi^2 + F_Theta^2",
-            "F_p": "pi_p*X^2*((1+4A_p)(s1 - s1^2) + (a_p - A_p) - B_p*(s2^2 + s2*s3 - A_p*s3^2)) - p^2  [p in E_exc, odd]",
+            "F_p": "pi_p*((1+4A_p)(s1 - s1^2) + (a_p - A_p) - B_p*(s2^2 + s2*s3 - A_p*s3^2)) - p^2*X^2",
             "F_patch": "prod over p in E_exc of F_p   (witnesses s1,s2,s3 = y,r,s shared)",
             "F": "(F_main * F_patch)^2 + (X*iota - 1)^2",
         },

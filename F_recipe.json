@@ -114,7 +114,6 @@
   "S": [
    2
   ],
-  "patch_constant_term_note": "F_p = pi_p X^2 G_p - p^2.  The argument of the O_(p) formula is X/p because m_p = p*O_p, so the cleared constant term is p^2 (an earlier draft of this lane used -1, which defines Z_(p) rather than m_p; corrected here).",
   "patch_constants": {
    "11": {
     "A": -1,
@@ -163,6 +162,18 @@
     "d": 5,
     "pi": 133,
     "q": 7
+   },
+   "2": {
+    "A": -1,
+    "B": 2,
+    "Delta": [
+     2,
+     3
+    ],
+    "a": 4,
+    "d": 17,
+    "pi": 6,
+    "q": 3
    },
    "23": {
     "A": -1,
@@ -213,19 +224,27 @@
     "q": 5
    }
   },
-  "patch_p2_control": {
-   "constants": {
-    "A": -1,
-    "B": 2,
-    "a": 4,
-    "d": 17,
-    "pi": 6,
-    "q": 3
-   },
-   "in_patch": false,
-   "why": "E_exc is a subset of V_K minus S and S = {2}; m_2 lies inside Z_(2), so a p = 2 factor would wrongly admit even integers. The p = 2 constants pass the same hypothesis checker and are kept only as a control arm."
+  "patch_set": {
+   "confirmed_by_smoke": "X = 3/10 needs the p = 2 factor (v_2 = -1); integers need none -- see SMOKE2.md",
+   "value": [
+    2,
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23
+   ],
+   "why": "the polynomial defines U_{w in V_K minus S0} m_w with the prescribed S0 = empty: Q \\ Z = {X : 1/X in U_{all w} m_w}.  The freezing construction uses S = {2}, so Sun's return step (9.4) adjoins U_{v in S minus S0} m_v = m_2.  Patch set = E_exc u {2}."
   },
   "pi": 2,
+  "substitution_note": {
+   "h_bridge_variable": "iota, not X: the polynomial defines the INVERSE image of U m_w (Sun (1.1) duality), so Sun's x is iota with X*iota = 1",
+   "patch": "F_p = pi_p G_p - p^2 X^2.  The O_(p) formula is applied to x = 1/(pX), so pi x^2 G = 1 clears to pi G = p^2 X^2.  The earlier draft's pi X^2 G - p^2 encodes X in m_p instead -- the wrong side of the duality.",
+   "why_it_matters": "U_w m_w is a proper subset of Q minus Z (e.g. 1/3 is in Q minus Z but in no m_w), so the un-inverted reading defines too small a set"
+  },
   "u": 1
  },
  "expansion_status": {
@@ -248,14 +267,14 @@
   "F_Phi": "(b*b1 - 1 - sigma*Pi_S)^2 + (a - u - upsilon*Pi_S)^2",
   "F_Theta": "prod over tau in Lambda of [(delta_tau*zeta - 1)^2 + Phat_tau^2 + ((D*zeta' - 1)*P0_tau)^2]",
   "F_main": "F_Phi^2 + F_Theta^2",
-  "F_p": "pi_p*X^2*((1+4A_p)(s1 - s1^2) + (a_p - A_p) - B_p*(s2^2 + s2*s3 - A_p*s3^2)) - p^2  [p in E_exc, odd]",
+  "F_p": "pi_p*((1+4A_p)(s1 - s1^2) + (a_p - A_p) - B_p*(s2^2 + s2*s3 - A_p*s3^2)) - p^2*X^2",
   "F_patch": "prod over p in E_exc of F_p   (witnesses s1,s2,s3 = y,r,s shared)",
   "G": "16*a^4*b^2 - (b-1)^4*(1+4*a^2)",
   "N": "a^2*z^2*G",
   "P0_tau": "-delta_tau*A*y^2 - 16*B*(r^2 - A*s^2) - 16",
   "Phat_tau": "delta_tau*(N^2 - A*y^2*D^2) - 16*B*(r^2 - A*s^2)*D^2 - 16*D^2",
   "delta_tau": "1 - A*tau^2",
-  "z": "X^3"
+  "z": "iota^3"
  },
  "target": "X in Q : X not in Z  <=>  exists (a,b,b1,sigma,upsilon,y,r,s,zeta,zetap,iota) in Q^11: F = 0",
  "term_counts_measured": {
@@ -312,42 +331,42 @@
    },
    "Phat_tau1": {
     "file": "Phat_tau1.terms.txt",
-    "sha256": "fee45d45c0b54c211f25f225614dbb47779e4d64ba7a5488cb20010f01e1bc93",
+    "sha256": "7c893e36ef8dc9388f141c34e3982d402c421da4e41aea550939911b859a9cec",
     "terms": 103
    },
    "Phat_tau11": {
     "file": "Phat_tau11.terms.txt",
-    "sha256": "1aec550cfba9dc9fa59b4338d7e60d20cd383ab9b8161e3dc2a072a5cfb4a52e",
+    "sha256": "382786674c1afcb96d47d634429ad02fbfc9d0918c969fcf698e71f917996d00",
     "terms": 116
    },
    "Phat_tau17": {
     "file": "Phat_tau17.terms.txt",
-    "sha256": "fb49df5f63e1a5c18d80dc91071fd3fe6888802eebe2c46b45a8da5ec7636de3",
+    "sha256": "c95f3e57c6eedbfd0f8037ff4e1b641379406283e2713ecb39ccf7fa511023f6",
     "terms": 116
    },
    "Phat_tau19": {
     "file": "Phat_tau19.terms.txt",
-    "sha256": "8e96b0b4ab2adc9f4569e30be2d6cb774abdea983d8dd186afdd90d819760fa2",
+    "sha256": "ed737c81ead30e00db39a008df17b896e5485d85ad53361ece9bb6bd7af1aeda",
     "terms": 116
    },
    "Phat_tau27": {
     "file": "Phat_tau27.terms.txt",
-    "sha256": "7f6403b8dd91f38b3e0b5648a5bf60a6406b09cd29e82adaef33ab9f415364a3",
+    "sha256": "dd74bc898fe17627b61781b25933a35bf525f43b0628e244fc16b111cea4c3c2",
     "terms": 116
    },
    "Phat_tau3": {
     "file": "Phat_tau3.terms.txt",
-    "sha256": "31e07260e7df347fd53e12399c5c66dd5041d0a826f5ee7ac71190a131ad0658",
+    "sha256": "ee1a4f94b95ce6f1be4d833c44e91692cd7ffea33437ada9ad8223116f32e788",
     "terms": 116
    },
    "Phat_tau33": {
     "file": "Phat_tau33.terms.txt",
-    "sha256": "786227aed2e96a4bbd2b15abe0d09ec532e4bdb5abe9ff74664a418bc84148b1",
+    "sha256": "d1e3658206bc3cc09fd0ef8be3018a8e54a180d886bb5c24277c596954562879",
     "terms": 116
    },
    "Phat_tau49": {
     "file": "Phat_tau49.terms.txt",
-    "sha256": "c4bfdec600c88e1413519437e2da56c8b3873c8d4245c3407bf7da0996e38ab7",
+    "sha256": "4d26a7015f5300a11a56184e5eb7374e98d9adbde87ace548729fc7bef5127c2",
     "terms": 116
    },
    "patch_p11": {
@@ -364,7 +383,7 @@
      "q": 3
     },
     "file": "patch_p11.terms.txt",
-    "sha256": "a3db5a9b960690d709188f4f21ac257770b1d524e57a4ab953d17d3a5b8d76ca",
+    "sha256": "e9e3e213f83e65852e04fef4afc1badc0316855d710f9664a7d9254fc08acc9a",
     "terms": 7
    },
    "patch_p13": {
@@ -381,7 +400,7 @@
      "q": 5
     },
     "file": "patch_p13.terms.txt",
-    "sha256": "e992107a704e96f702e527ea6b3f4d2b7edfc7d30efdb9bad5e1bc78cbf322c9",
+    "sha256": "b75241ee6c05e17f17a89e5745da9e8ee6c5349bac2d517a99d66d6bb3154d3a",
     "terms": 7
    },
    "patch_p17": {
@@ -398,7 +417,7 @@
      "q": 3
     },
     "file": "patch_p17.terms.txt",
-    "sha256": "d643eb4dc36f7dbbe4b229fcd12dcd304982e6d2747a9b3859e44ae770c59d5a",
+    "sha256": "90529395256324b552fc0aafda35ba6af8bac5a0ba184c7789685dc4eb2a8f9b",
     "terms": 7
    },
    "patch_p19": {
@@ -415,7 +434,7 @@
      "q": 7
     },
     "file": "patch_p19.terms.txt",
-    "sha256": "c609bb3b5967400ed288aa25e5a886fc18a1ba9dced4202d4c5a25181a08c250",
+    "sha256": "72a6edf52297a64c907ddfdd74d91e80bd2921eee99f76fe3f4f79104c806ed2",
     "terms": 7
    },
    "patch_p2": {
@@ -432,7 +451,7 @@
      "q": 3
     },
     "file": "patch_p2.terms.txt",
-    "sha256": "14c7bb7be21af463cfe0b31a36cf117882b3177223a403bcfd581b21759b5ffc",
+    "sha256": "339abc900ba6b6adb3c635c4bfe98460f2ed2c884da0698236c0a23ea6a8f758",
     "terms": 7
    },
    "patch_p23": {
@@ -449,7 +468,7 @@
      "q": 3
     },
     "file": "patch_p23.terms.txt",
-    "sha256": "3cbabc9da1968f59feedeedafd3af1c9c8ce9befe589221dfdccc6e24e89fd38",
+    "sha256": "94827d3aa557d926336e76e00c805138f4fa70083ea9721a42a6f173a3ade19b",
     "terms": 7
    },
    "patch_p3": {
@@ -466,7 +485,7 @@
      "q": 5
     },
     "file": "patch_p3.terms.txt",
-    "sha256": "d475919ba60f6ba94cd23b518d5c04fca2f0717b90ed0d288b8f2e59674b3c9a",
+    "sha256": "a4c8757957e4984e06240f2dde886ddcdffa55461ca1852fe782b4f4adbf3ca3",
     "terms": 7
    },
    "patch_p5": {
@@ -483,7 +502,7 @@
      "q": 3
     },
     "file": "patch_p5.terms.txt",
-    "sha256": "b0bd20eaaa2dd94b61a47a4e46935abd6fca65d6622a1ae9077e9e0ec438d54d",
+    "sha256": "706ae88d5a262962a17d2dc5250a59e99421dcdc4a6a8aa78d98521e623b8949",
     "terms": 7
    },
    "patch_p7": {
@@ -500,7 +519,7 @@
      "q": 5
     },
     "file": "patch_p7.terms.txt",
-    "sha256": "2748cbe1d0429f4ad362b3ed42a967cde2b0eb8f4f522856cd20643fb9afed8e",
+    "sha256": "7b178eefcb9672c541f9e21115794bb7af874f2da897d2bdf06c3669c611c796",
     "terms": 7
    },
    "phi": {
@@ -510,42 +529,42 @@
    },
    "thetafac_tau1": {
     "file": "thetafac_tau1.terms.txt",
-    "sha256": "20eff90d491963a16a65db29512ad75e9e80888754a355b71f211752dbcceeb3",
+    "sha256": "3a9d490bf05deb54ef68e86b9dbe0284f56251e960bc0bbd709be7a74f055b70",
     "terms": 2022
    },
    "thetafac_tau11": {
     "file": "thetafac_tau11.terms.txt",
-    "sha256": "9fbd320bee1e226b4467e50a1caa5939ef8e87a226bad091c7310ea0a052e8d4",
+    "sha256": "de245e35c38b653cdc641a5e4dd52b7837ad5af337dc357c169236ee0f312b7a",
     "terms": 2347
    },
    "thetafac_tau17": {
     "file": "thetafac_tau17.terms.txt",
-    "sha256": "25ce70320907e13b999ac164f90affe86051b74092494de1de1610ff177dc8ae",
+    "sha256": "0051bbdbf2881067c2126e64de6ccebd7d99db447a22353869d015738b13b009",
     "terms": 2347
    },
    "thetafac_tau19": {
     "file": "thetafac_tau19.terms.txt",
-    "sha256": "d9aa612b80b81f8bbd7b485741429fb4df4721c35baec8dc725fc4e1bfc26c5c",
+    "sha256": "bd24fb120a3d1c43f6b26c84ca0e6a664128d530c3a8bd78f2a0d1adfa6a8e3c",
     "terms": 2347
    },
    "thetafac_tau27": {
     "file": "thetafac_tau27.terms.txt",
-    "sha256": "5bd92663da5225bee1645be04f2eb2346399df85af83782d279abb0da2a4e5b2",
+    "sha256": "eb433fd71a788d3b4356b6a9ab17c9c27201f2a780cf7b031bf3bc32962fd9ce",
     "terms": 2347
    },
    "thetafac_tau3": {
     "file": "thetafac_tau3.terms.txt",
-    "sha256": "398035ccded30b4ce666ffec454cb6deb752345f376d3acb721b8afecbf02cdb",
+    "sha256": "9d9b557f47b732447595ba26a6fd47e7e2fddf5919b8277155aefacaa58653b0",
     "terms": 2347
    },
    "thetafac_tau33": {
     "file": "thetafac_tau33.terms.txt",
-    "sha256": "a4a359ad3de77fa062f6c79601c6483ca4b113106c5356c7f71521f0b1129381",
+    "sha256": "f962a0a8dc7c991d9ae71277c0e7c8da38aa8e33302b58a967c2d9480d1cd3ca",
     "terms": 2347
    },
    "thetafac_tau49": {
     "file": "thetafac_tau49.terms.txt",
-    "sha256": "a75d5db438f9599469b7a2a20656c04763cfd13b3bdd2a4262f022b9cfbb544d",
+    "sha256": "3b058c2225c8edd00c8452ce6ec273aa1be6773adee19eae38b5d8e94c9e63e3",
     "terms": 2347
    }
   }

@@ -19,10 +19,11 @@ PI = 2
 U = 1
 LAMBDA = (1, 17, 33, 49, 3, 11, 19, 27)
 # (p, pi_p, A_p, B_p, a_p)   -- per-prime Prop 4.2 constants, all hypotheses machine-checked.
-# ONLY the odd exceptional primes belong here: the union patched in (9.4) is U_{w in E_exc} m_w
-# with E_exc subset of V_K \ S, and S = {2}; m_2 is a subset of Z_(2), so a p=2 factor would
-# wrongly admit even integers.  (The p = 2 constants are kept in perprime.json as a control.)
+# The union defined is U_{w in V_K \ S0} m_w with the prescribed S0 = empty (Q \ Z = {X : 1/X in
+# U_{all w} m_w}), while the freezing construction uses S = {2}; Sun's "return from S to S0" step
+# adjoins U_{v in S \ S0} m_v = m_2.  So the patch set is E_exc u {2}: 9 primes.
 PATCH = (
+    (2, 6, -1, 2, 4),
     (3, 15, 1, -3, 3),
     (5, 15, -1, 5, 7),
     (7, 35, 1, -7, 9),
@@ -32,7 +33,8 @@ PATCH = (
     (19, 133, -2, 19, 1),
     (23, 69, -1, 23, 7),
 )
-E_EXC = tuple(p for p, *_ in PATCH)
+E_EXC = (3, 5, 7, 11, 13, 17, 19, 23)          # Sun's exceptional set (subset of V_K \ S)
+PATCH_PRIMES = (2,) + E_EXC                    # S \ S0 = {2} is adjoined by the return step (9.4)
 
 
 def _A(a):
@@ -43,13 +45,13 @@ def _G(a, b):
     return 16 * a ** 4 * b ** 2 - (b - 1) ** 4 * (1 + 4 * a * a)
 
 
-def _N(a, b, X):
-    z = X ** 3
+def _N(a, b, X, iota):
+    z = iota ** 3      # h-bridge variable is iota = 1/X, not X
     return a * a * z * z * _G(a, b)
 
 
-def _D(a, b, X):
-    z = X ** 3
+def _D(a, b, X, iota):
+    z = iota ** 3
     return _A(a) * b * b * (1 - z - a * a * z * z)
 
 
@@ -57,10 +59,10 @@ def _delta(a, tau):
     return 1 - _A(a) * (tau * tau)
 
 
-def _Phat(a, b, X, tau, y, r, s):
+def _Phat(a, b, X, tau, y, r, s, iota):
     A = _A(a)
-    N = _N(a, b, X)
-    D = _D(a, b, X)
+    N = _N(a, b, X, iota)
+    D = _D(a, b, X, iota)
     d = _delta(a, tau)
     B = b * PI
     return d * (N * N - A * y * y * D * D) - 16 * B * (r * r - A * s * s) * D * D - 16 * D * D
@@ -77,22 +79,26 @@ def _F_Phi(a, b, b1, sigma, upsilon):
     return (b * b1 - 1 - sigma * PI) ** 2 + (a - U - upsilon * PI) ** 2
 
 
-def _F_Theta(a, b, X, y, r, s, zeta, zetap):
+def _F_Theta(a, b, X, y, r, s, zeta, zetap, iota):
     acc = Q(1)
-    D = _D(a, b, X)
+    D = _D(a, b, X, iota)
     for tau in LAMBDA:
         d = _delta(a, tau)
         p1 = d * zeta - 1
         p3 = D * zetap - 1
-        acc *= p1 * p1 + _Phat(a, b, X, tau, y, r, s) ** 2 + (p3 * _P0(a, b, X, tau, y, r, s)) ** 2
+        acc *= (p1 * p1 + _Phat(a, b, X, tau, y, r, s, iota) ** 2
+                + (p3 * _P0(a, b, X, tau, y, r, s)) ** 2)
     return acc
 
 
 def F_p(p, pi_p, A_p, B_p, a_p, X, y, r, s):
-    """pi_p X^2 [(1+4A)(y - y^2) + (a - A) - B(r^2 + r s - A s^2)] - p^2."""
+    """pi_p * [(1+4A)(y - y^2) + (a - A) - B(r^2 + r s - A s^2)] - p^2 X^2.
+
+    Encodes "X not in Z_(p)" (i.e. 1/X in m_p): the O_(p) formula applied to x = 1/(pX).
+    """
     D = 1 + 4 * A_p
     bracket = D * (y - y * y) + (a_p - A_p) - B_p * (r * r + r * s - A_p * s * s)
-    return pi_p * X * X * bracket - p * p
+    return pi_p * bracket - p * p * X * X
 
 
 def _F_patch(X, y, r, s):
@@ -108,7 +114,8 @@ def evaluate(X, w):
     a, b, y, r, s = (Q(w[k]) for k in ("a", "b", "y", "r", "s"))
     zeta, zetap = Q(w["zeta"]), Q(w["zetap"])
     b1, sigma, upsilon, iota = (Q(w[k]) for k in ("b1", "sigma", "upsilon", "iota"))
-    f_main = _F_Phi(a, b, b1, sigma, upsilon) ** 2 + _F_Theta(a, b, X, y, r, s, zeta, zetap) ** 2
+    f_main = (_F_Phi(a, b, b1, sigma, upsilon) ** 2
+              + _F_Theta(a, b, X, y, r, s, zeta, zetap, iota) ** 2)
     f_patch = _F_patch(X, y, r, s)
     return (f_main * f_patch) ** 2 + (X * iota - 1) ** 2
 
@@ -136,13 +143,15 @@ def selftest():
                                                   Q(w["sigma"]), Q(w["upsilon"])))}
     for tau in LAMBDA:
         checks["Phat%d" % tau] = (Phat(tau), (lambda t: lambda w: _Phat(
-            Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"])))(tau))
+            Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"]),
+            Q(w["iota"])))(tau))
         checks["P0_%d" % tau] = (P0(tau), (lambda t: lambda w: _P0(
             Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"])))(tau))
         checks["thetafac%d" % tau] = (theta_factor(tau), (lambda t: lambda w: (
             (_delta(Q(w["a"]), t) * Q(w["zeta"]) - 1) ** 2
-            + _Phat(Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"])) ** 2
-            + ((_D(Q(w["a"]), Q(w["b"]), Q(w["X"])) * Q(w["zetap"]) - 1)
+            + _Phat(Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"]),
+                    Q(w["iota"])) ** 2
+            + ((_D(Q(w["a"]), Q(w["b"]), Q(w["X"]), Q(w["iota"])) * Q(w["zetap"]) - 1)
                * _P0(Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"]))) ** 2))(tau))
     for consts in PATCH:
         p, pi_p, A_p, B_p, a_p = consts

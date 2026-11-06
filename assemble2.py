@@ -18,15 +18,19 @@ TAUS = [1, 17, 33, 49, 3, 11, 19, 27]
 
 
 def patch_poly(A_q, B_q, a_q, pi_q, p):
-    """pi*X^2*[(1+4A)(s1 - s1^2) + (a - A) - B*(s2^2 + s2 s3 - A s3^2)] - p^2."""
-    x = SPoly.var(NV, X)
+    """pi_p * G_p(s1,s2,s3) - p^2 X^2.
+
+    The condition encoded is X not in Z_(p), i.e. 1/X in m_p: the O_(p) formula is applied to the
+    argument x = (1/X)/p, so pi x^2 G = 1 becomes pi G = p^2 X^2.  (The alternative pi X^2 G - p^2
+    encodes X in m_p instead, which is the wrong side of the duality -- see POLYNOMIAL_LITERAL.md.)
+    """
     s1 = SPoly.var(NV, Y)
     s2 = SPoly.var(NV, R)
     s3 = SPoly.var(NV, S)
     D = 1 + 4 * A_q
     bracket = (D * (s1 - s1 ** 2) + (a_q - A_q)
                - B_q * (s2 ** 2 + s2 * s3 - A_q * (s3 ** 2)))
-    return pi_q * (x ** 2) * bracket - SPoly.const(NV, p * p)
+    return pi_q * bracket - SPoly.const(NV, p * p) * (SPoly.var(NV, X) ** 2)
 
 
 def write_termlist(path, name, p, extra=""):
