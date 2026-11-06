@@ -118,6 +118,10 @@ class Q2:
         return "2^%d*%d(mod 2^%d)" % (self.k, self.u, self.k + self.p)
 
 
+def _e(x):
+    return x if isinstance(x, E) else E.rat(_c(x))
+
+
 def _c(x):
     if isinstance(x, Q2):
         return x
@@ -154,9 +158,11 @@ class E:
         return E(_c(x), Q2.Z(0))
 
     def __add__(self, o):
+        o = _e(o)
         return E(self.p + o.p, self.q + o.q)
 
     def __sub__(self, o):
+        o = _e(o)
         return E(self.p - o.p, self.q - o.q)
 
     def __neg__(self):
@@ -190,6 +196,10 @@ class E:
     def tr(self):
         return self.p * 2 - self.q
 
+    def to_q2(self, tol=60):
+        """(value, isInQ2): the zeta-coefficient must vanish."""
+        return self.p, self.q.ge(tol)
+
     def res(self):
         """residue mod M_E as (a,b) in {0,1}^2 (element a + b*zeta of F_4)."""
         def r(x):
@@ -202,6 +212,9 @@ class E:
 
     def is_zero(self):
         return self.p.is_zero_mod() and self.q.is_zero_mod()
+
+    def ge(self, n):
+        return self.p.ge(n) and self.q.ge(n)
 
     def zero_to(self, n):
         """True when z = 0 mod 2^n (proved)."""

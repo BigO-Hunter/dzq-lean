@@ -1,0 +1,296 @@
+{
+ "artifact": "literal 11-variable polynomial for Q \\ Z (Sun 2026 Thm 1.1, constructive folds)",
+ "constants": {
+  "E_exc": {
+   "contains_at_least": [
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23
+   ],
+   "status": "NOT ENUMERATED -- named blocker",
+   "why": "E_exc is the finite exceptional set of Sun Prop 9.1 (9.4); it is the primes with residue field <= 25 (Lemma 5.1 needs q > 25), the poles of tau, and the primes dividing tau, tau-1, tau+1 for the tau actually used, plus the primes forced by the sections 7/8 target-place arguments"
+  },
+  "Lambda": [
+   1,
+   3
+  ],
+  "Lambda_status": "2 tau values verified to serve every point of P_2 (exhaustive over a full mod-2^10 grid; see VERIFICATION.md)",
+  "Pi_S": 2,
+  "S": [
+   2
+  ],
+  "patch_other_primes": {
+   "recipe": "same Lemma 4.1 / Prop 3.6(iii) template with per-prime constants (A_p, B_p, pi4_p, alpha_p) found by finite search",
+   "status": "NOT COMPUTED -- named blocker"
+  },
+  "patch_p2": {
+   "formula": "10*x^2*(7 + 5*x1 - 5*x1^2 - 2*x2^2 - 2*x2*x3 + 2*x3^2) - 1",
+   "meaning": "x in Z_(2) <=> x = 0 or exists x1,x2,x3: formula = 0",
+   "source": "G2_REDERIVATION.md 1, from Daans Prop 3.6(iii) with c=1, A=1, B=2, pi4=10, alpha=8"
+  },
+  "pi": 2,
+  "u": 1
+ },
+ "degrees": {
+  "Phat_tau": {
+   "X": 12,
+   "a": 14,
+   "b": 8,
+   "r": 2,
+   "s": 2,
+   "y": 2
+  },
+  "theta_factor": {
+   "X": 24,
+   "a": 28,
+   "b": 16,
+   "r": 4,
+   "s": 4,
+   "y": 4,
+   "zeta": 2,
+   "zeta'": 2
+  }
+ },
+ "expansion_status": {
+  "F": "F_main^2 and (F_main*F_patch)^2 push the expanded size past 1e13 terms; the expanded term list is NOT producible",
+  "F_Theta": "product of |Lambda| = 2 factors of 2022 and 2347 terms -> ~4.7e6 terms before cancellation (measured factor sizes)",
+  "consequence": "the polynomial is literal as a straight-line program (F_eval.py) and literal leaf-by-leaf as sparse term lists; the top-level product is left as a product",
+  "per_branch_term_lists": "emitted: phi, Phat_tau1/3, P0_tau1/3, thetafac_tau1/3, patch2"
+ },
+ "fold_justification": {
+  "E1": "over Q (ordered), f = 0 and g = 0 <=> f^2 + g^2 = 0",
+  "E2": "f*g = 0 <=> f = 0 or g = 0 (union by padded product; witnesses shared)",
+  "E3": "the product over Lambda realises the disjunction; zeta kills delta_tau = 0, zeta' the D = 0 case",
+  "E4": "X*iota = 1 forces X != 0 (0^{-1} = 0 would otherwise admit X = 0)"
+ },
+ "formulas": {
+  "A": "1 + 4*a^2",
+  "B": "b*pi = 2*b",
+  "D": "(1+4*a^2)*b^2*(1 - z - a^2*z^2)",
+  "F": "(F_main * F_patch)^2 + (X*iota - 1)^2",
+  "F_Phi": "(b*b1 - 1 - sigma*Pi_S)^2 + (a - u - upsilon*Pi_S)^2",
+  "F_Theta": "prod over tau in Lambda of [(delta_tau*zeta - 1)^2 + Phat_tau^2 + ((D*zeta' - 1)*P0_tau)^2]",
+  "F_main": "F_Phi^2 + F_Theta^2",
+  "F_patch": "prod over p in E_exc of F_p",
+  "G": "16*a^4*b^2 - (b-1)^4*(1+4*a^2)",
+  "N": "a^2*z^2*G",
+  "P0_tau": "-delta_tau*A*y^2 - 16*B*(r^2 - A*s^2) - 16",
+  "Phat_tau": "delta_tau*(N^2 - A*y^2*D^2) - 16*B*(r^2 - A*s^2)*D^2 - 16*D^2",
+  "delta_tau": "1 - A*tau^2",
+  "z": "X^3"
+ },
+ "target": "X in Q : X not in Z  <=>  exists (a,b,b1,sigma,upsilon,y,r,s,zeta,zetap,iota) in Q^11: F = 0",
+ "term_counts_measured": {
+  "P0_tau1": {
+   "degrees": [
+    0,
+    4,
+    1,
+    2,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "sha256": "55e629db654ba51cc43f73088ac55909341bbea7379078de951e0c9aaf3b6b30",
+   "terms": 6
+  },
+  "P0_tau3": {
+   "degrees": [
+    0,
+    4,
+    1,
+    2,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "sha256": "8ec3517dee49ab32399ea44c730f68bf5fafca68c24621e5baaf6d2c4166e864",
+   "terms": 7
+  },
+  "Phat_tau1": {
+   "degrees": [
+    12,
+    14,
+    8,
+    2,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "sha256": "fee45d45c0b54c211f25f225614dbb47779e4d64ba7a5488cb20010f01e1bc93",
+   "terms": 103
+  },
+  "Phat_tau3": {
+   "degrees": [
+    12,
+    14,
+    8,
+    2,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "sha256": "31e07260e7df347fd53e12399c5c66dd5041d0a826f5ee7ac71190a131ad0658",
+   "terms": 116
+  },
+  "patch2": {
+   "degrees": [
+    2,
+    0,
+    0,
+    2,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "sha256": "4da3a7e7fb13cd5a9cf7cf8f75b679493cb60d54a026bd0f86e1edfdafcddec4",
+   "terms": 7
+  },
+  "phi": {
+   "degrees": [
+    0,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    2,
+    2,
+    0
+   ],
+   "sha256": "4bf5f5dbc3d67a2805df957ca99fc5eb5c13a1143a771e9915ab0bebe89626b1",
+   "terms": 11
+  },
+  "thetafac_tau1": {
+   "degrees": [
+    24,
+    28,
+    16,
+    4,
+    4,
+    4,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "sha256": "20eff90d491963a16a65db29512ad75e9e80888754a355b71f211752dbcceeb3",
+   "terms": 2022
+  },
+  "thetafac_tau3": {
+   "degrees": [
+    24,
+    28,
+    16,
+    4,
+    4,
+    4,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "sha256": "398035ccded30b4ce666ffec454cb6deb752345f376d3acb721b8afecbf02cdb",
+   "terms": 2347
+  }
+ },
+ "variables": [
+  {
+   "index": 0,
+   "name": "X",
+   "role": "the rational input"
+  },
+  {
+   "index": 1,
+   "name": "a",
+   "role": "quaternion parameter (a - u in m_S)"
+  },
+  {
+   "index": 2,
+   "name": "b",
+   "role": "quaternion parameter (b a unit on S)"
+  },
+  {
+   "index": 3,
+   "name": "y",
+   "role": "Psi_tau witness (also patch witness)"
+  },
+  {
+   "index": 4,
+   "name": "r",
+   "role": "Psi_tau witness"
+  },
+  {
+   "index": 5,
+   "name": "s",
+   "role": "Psi_tau witness"
+  },
+  {
+   "index": 6,
+   "name": "zeta",
+   "role": "delta_tau*zeta = 1 witness"
+  },
+  {
+   "index": 7,
+   "name": "zeta'",
+   "role": "D*zeta' = 1 witness"
+  },
+  {
+   "index": 8,
+   "name": "b1",
+   "role": "Phi: b*b1 - 1 = sigma*Pi_S"
+  },
+  {
+   "index": 9,
+   "name": "sigma",
+   "role": "Phi"
+  },
+  {
+   "index": 10,
+   "name": "upsilon",
+   "role": "Phi: a - u = upsilon*Pi_S"
+  },
+  {
+   "index": 11,
+   "name": "iota",
+   "role": "X*iota = 1"
+  }
+ ]
+}

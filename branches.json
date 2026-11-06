@@ -1,0 +1,146 @@
+{
+ "P0_tau1": {
+  "degrees": [
+   0,
+   4,
+   1,
+   2,
+   2,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "sha256": "55e629db654ba51cc43f73088ac55909341bbea7379078de951e0c9aaf3b6b30",
+  "terms": 6
+ },
+ "P0_tau3": {
+  "degrees": [
+   0,
+   4,
+   1,
+   2,
+   2,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "sha256": "8ec3517dee49ab32399ea44c730f68bf5fafca68c24621e5baaf6d2c4166e864",
+  "terms": 7
+ },
+ "Phat_tau1": {
+  "degrees": [
+   12,
+   14,
+   8,
+   2,
+   2,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "sha256": "fee45d45c0b54c211f25f225614dbb47779e4d64ba7a5488cb20010f01e1bc93",
+  "terms": 103
+ },
+ "Phat_tau3": {
+  "degrees": [
+   12,
+   14,
+   8,
+   2,
+   2,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "sha256": "31e07260e7df347fd53e12399c5c66dd5041d0a826f5ee7ac71190a131ad0658",
+  "terms": 116
+ },
+ "patch2": {
+  "degrees": [
+   2,
+   0,
+   0,
+   2,
+   2,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "sha256": "4da3a7e7fb13cd5a9cf7cf8f75b679493cb60d54a026bd0f86e1edfdafcddec4",
+  "terms": 7
+ },
+ "phi": {
+  "degrees": [
+   0,
+   2,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   2,
+   2,
+   2,
+   0
+  ],
+  "sha256": "4bf5f5dbc3d67a2805df957ca99fc5eb5c13a1143a771e9915ab0bebe89626b1",
+  "terms": 11
+ },
+ "thetafac_tau1": {
+  "degrees": [
+   24,
+   28,
+   16,
+   4,
+   4,
+   4,
+   2,
+   2,
+   0,
+   0,
+   0,
+   0
+  ],
+  "sha256": "20eff90d491963a16a65db29512ad75e9e80888754a355b71f211752dbcceeb3",
+  "terms": 2022
+ },
+ "thetafac_tau3": {
+  "degrees": [
+   24,
+   28,
+   16,
+   4,
+   4,
+   4,
+   2,
+   2,
+   0,
+   0,
+   0,
+   0
+  ],
+  "sha256": "398035ccded30b4ce666ffec454cb6deb752345f376d3acb721b8afecbf02cdb",
+  "terms": 2347
+ }
+}
