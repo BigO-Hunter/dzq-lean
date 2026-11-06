@@ -243,3 +243,13 @@ specialization for genus-one fibrations** — the soluble-fiber set of a genus-o
 fibration has no known finite (norm-)description; proving Conjecture G or
 building a counterexample requires exactly this. Secondary gap: HP(P) in
 general (= a Schinzel-type statement).
+
+--------------------------------------------------------------------
+## Numeric spot-check (hilbert_check.py, this dir)
+
+Thm 3(iii)'s closed form at denominator primes verified against direct Hilbert
+computation for (f,g) = (q²+1, q+3), (a,b) ∈ {(1,3),(5,7),(11,6),(23,15),(7,35)}:
+7/7 match, all +1 (here f_D=g_D=1 makes every denominator prime good).
+Numerator-prime wall demonstrated: 3/7 sample points carry an odd-valuation
+prime of F̃·G̃ with non-residue g-unit ⇒ fiber locally insoluble — the wall is
+real, not vacuous. (p=2 excluded per doc: folds into finite CRT choice.)
