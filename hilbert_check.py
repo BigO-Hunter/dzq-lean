@@ -23,7 +23,6 @@ def hilbert_p(a: Rational, b: Rational, p: int) -> int:
         num, den = (x * p**(-v)).p, (x * p**(-v)).q
         return (num * pow(den, -1, p)) % p
     ua_res, ub_res = unit(a, va), unit(b, vb)
-    r = pow(-1, (p*p-1)//8 if False else ((p-1)//2)*va*vb, 2)  # placeholder
     # (a,b)_p = (-1)^{va*vb*(p-1)/2} * (ua/p)^{vb} * (ub/p)^{va}
     t = legendre_symbol(ua_res, p)**vb * legendre_symbol(ub_res, p)**va
     sign = -1 if (va*vb*((p-1)//2)) % 2 else 1
@@ -74,7 +73,7 @@ for (a, b) in [(1, 3), (2, 3), (1, 7), (5, 7), (3, 5), (4, 9), (1, 21)]:
             leg = legendre_symbol(u, p)
             if leg == -1:
                 print(f"a={a} b={b}: numerator prime p={p} | f-valuation {vf} odd, "
-                      f"(g-unit/p)=-1  -> FIBER LOCALLY INSOLEUBLE at {p} (wall real)")
+                      f"(g-unit/p)=-1  -> FIBER LOCALLY INSOLUBLE at {p} (wall real)")
                 wall_shown += 1
                 break
 print(f"wall demonstrated at {wall_shown} of 7 sample points (odd-valuation obstruction)")
