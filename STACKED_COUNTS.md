@@ -1,23 +1,36 @@
 # STACKED_COUNTS.md — T4 probe + ideal-redundancy sweep, stacked candidate
-# (numbers final from stacked.log / stack_log.json; measured, control arms below)
+# (T4-probe numbers final; stack span-drop numbers filled from stacked.log)
 
-## Ledger: 4,973 → X
+## Ledger: T4-probe variant (checker-verified, `variantB_check.out`)
 
-| quantity | shipped v4 | stacked variant | delta |
+| quantity | shipped v4 | swept variant (T4 probe) | delta |
+|---|---|---|---|
+| total variables | 4,973 | 4,922 | **−51** |
+| residual rows | 4,552 | 4,501 | **−51** |
+| Φ monomials | 72,925 | 73,894 | +969 |
+| degree | 4 | 4 | — |
+| max \|Φ coeff\| bits | 80 | 129 | +49 |
+| max \|row coeff\| bits | 40 | 64 | +24 |
+| weights | all 1 | all 1 | — |
+| checker (S3 identity, exact) | 0-diff | **0-diff, exit 0** | — |
+
+## Ledger: stacked variant (sweep + proved span drops)
+
+| quantity | shipped v4 | stacked | delta |
 |---|---|---|---|
 | total variables | 4,973 | TBD | TBD |
 | residual rows | 4,552 | TBD | TBD |
 | Φ monomials | 72,925 | TBD | TBD |
 | degree | 4 | TBD | TBD |
-| max \|Φ coeff\| bits | 80 | TBD | TBD |
-| max \|row coeff\| bits | 40 | TBD | TBD |
-| weights | all 1 | all 1 | — |
+| checker | 0-diff | TBD | — |
+
+(≤2,486 flag: N/A — the stack does not approach the halving target; see report.)
 
 ## Move ledger (every move exactly verified; see REDUNDANCY.md for proof classes)
 
-- elimination-sweep ops (definition substitutions, exact per-op): TBD
+- elimination-sweep ops (definition substitutions, exact per-op): **51**
   (21 constant pins ±3^16, 29 height/scalar/beta carriers, 1 pole-adjacent
-  global carrier x1461 in the first pass; subsequent iterations TBD)
+  global carrier x1461); 0 further ops after drops (measured in iterations).
 - proved span drops (exact-Q combination per drop): TBD
 - pattern-family drops: **0** (hypothesis refuted, see REDUNDANCY.md §3)
 - T4-specific (pole blocks): **1 variable** of 307 pole-block carriers; the

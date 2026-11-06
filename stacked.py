@@ -200,26 +200,32 @@ def try_lift(rows_list, deps_list, d):
     return None
 
 def drop_pass():
-    """mark alive[i]=False for exactly the rows proved in the Q-span of other ALIVE rows"""
+    """mark alive[i]=False for exactly the rows proved in the Q-span of other ALIVE rows.
+    Lazy prime escalation: prime 1 gives a superset of Q-dependencies; the exact
+    Fraction lift+proof decides each drop. More primes only for unlifted rows."""
     live_idx = [i for i in range(len(rows)) if alive[i] and rows[i]]
     live_rows = [rows[i] for i in live_idx]
-    deps_all = []
-    cand = None
-    for P in PRIMES:
+    deps_by_prime = []
+    dropped = 0
+    for pi, P in enumerate(PRIMES):
         n, deps = elim(live_rows, P)
-        deps_all.append(deps)
-        s = set(deps)
-        cand = s if cand is None else (cand & s)
+        deps_by_prime.append(deps)
+        cand = set(deps_by_prime[0])
+        for k in range(1, pi + 1):
+            cand &= set(deps_by_prime[k])
         print(f"    prime rank {n}, deps {len(deps)} (intersect {len(cand)})", flush=True)
-    drops = []
-    for d in sorted(cand):
-        xs = try_lift(live_rows, deps_all, d)
-        if xs is not None:
-            drops.append((d, xs))
-    for d, _ in drops:
-        alive[live_idx[d]] = False
-        log["dropped_rows"].append(live_idx[d])
-    return len(drops)
+        drops = []
+        for d in sorted(cand):
+            xs = try_lift(live_rows, deps_by_prime[:pi + 1], d)
+            if xs is not None:
+                drops.append((d, xs))
+        print(f"    proved with {pi+1} prime(s): {len(drops)}", flush=True)
+        if drops or pi == len(PRIMES) - 1:
+            for d, _ in drops:
+                alive[live_idx[d]] = False
+                log["dropped_rows"].append(live_idx[d])
+            return len(drops)
+    return 0
 
 t0 = time.time()
 for it in range(4):

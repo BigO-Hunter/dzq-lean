@@ -41,11 +41,21 @@ substituted away without leaving the deg-2 budget — the fusion target rows
 ARE those squares' consumers. There is no row-reorganization that drops
 variables: every block local is load-bearing.
 
-## Measured deltas (bounded elimination sweep, whole system)
+## Measured deltas (bounded elimination sweep, whole system — variantB, checker-verified)
 
-See STACKED_COUNTS.md for the ledger. T4-specific: **−1 variable** (x1461) of
-the 370 pole locals' final-space carriers; the other 306 are degree- or
-structure-tight. T4 as scoped ("fuse 8 pole residuals into conic equations,
-−interface duplication ≈ −250") is refuted at row level: the 296 pole rows in
-final space are 37 E7 rows + already-fused definitions; nothing foldable
-remains.
+Full-system bounded sweep (subsumes T4; per-op exact proofs; coefficient cap
+2^64): **51 ops → −51 variables, −51 rows** (4,973→4,922 vars; 4,552→4,501
+rows). Breakdown: 21 constant pins (x4118..x4138 := ±3^16, rows 0–20), 29
+height/scalar/beta linear-definition carriers, **1 pole-adjacent global
+carrier (x1461)**. Φ′ expansion: 72,925 → 73,894 monomials (+969 — constant
+substitution spreads terms), degree 4, max |Φ coeff| 129 bits (up from 80 —
+the price of substituting 2^40-scale definitions), max |row coeff| 2^64.
+Artifact checker on the variant package + term list: **identity 0-diff,
+exit 0** (`variantB_check.out`; term list
+`variantB/phi_variant.canonical.txt.gz`).
+
+**Plainly: savings < 50 for T4 proper — exactly 1 pole-block variable.** The
+other 50 wins come from outside the pole blocks (the T5-class sweep). T4 as
+scoped ("fuse 8 pole residuals into conic equations, −interface duplication
+≈ −250") is refuted at row level: the 296 pole rows in final space are 37 E7
+rows + already-fused definitions; nothing foldable remains.
