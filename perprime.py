@@ -44,6 +44,10 @@ def find_quaternion(p, amax=30, bmax=30):
             dl = delta_of(A, B)
             if p not in dl or "inf" in dl or len(dl) != 2:
                 continue
+            # mirror the published p = 2 shape: the B-coefficient carries the ramification at p
+            # (B = +-p, so B = 0 mod p) while D = 1+4A stays a unit there.
+            if (1 + 4 * A) % p == 0 or B % p != 0:
+                continue
             q = next(iter(dl - {p}))
             key = (abs(A) + abs(B), abs(A), abs(B))
             if best is None or key < best[0]:

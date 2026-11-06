@@ -1,18 +1,38 @@
 """The assembled polynomial as a self-contained straight-line evaluator (exact, Fractions).
 
-This is F = (F_main * F_patch)^2 + (X*iota - 1)^2 with the constants of this lane:
-  S = {2}, u = 1, pi = 2, Lambda = (1, 3)   [verified local cover]
-  F_patch = F_2 only  --  the other E_exc primes are the NAMED BLOCKER (see POLYNOMIAL_LITERAL.md)
+    F = (F_main * F_patch)^2 + (X*iota - 1)^2
+    F_main  = F_Phi^2 + F_Theta^2
+    F_Theta = prod_{tau in Lambda} [ (delta_tau zeta - 1)^2 + Phat_tau^2 + ((D zeta' - 1) P0_tau)^2 ]
+    F_patch = prod_{p in E_exc} F_p ,   F_p = pi_p X^2 G_p(y, r, s) - p^2
 
-evaluate(X, witness) returns a Fraction.  F == 0 means "witness found".
+Constants: S = {2}, u = 1, pi = 2,
+  Lambda = (1, 17, 33, 49, 3, 11, 19, 27)     [(4 lifts per local class; see E_EXC.md)]
+  E_exc  = (3, 5, 7, 11, 13, 17, 19, 23)      [8 primes, all of them forced]
 
-Usage:  python3 F_eval.py            # runs the built-in self-checks
+The argument of each O_(p) formula is X/p (m_p = p*O_p), hence the constant term p^2.
+
+Usage:  python3 F_eval.py            # self-checks against the emitted term lists
 """
 from fractions import Fraction as Q
 
 PI = 2
 U = 1
-LAMBDA = (1, 3)
+LAMBDA = (1, 17, 33, 49, 3, 11, 19, 27)
+# (p, pi_p, A_p, B_p, a_p)   -- per-prime Prop 4.2 constants, all hypotheses machine-checked.
+# ONLY the odd exceptional primes belong here: the union patched in (9.4) is U_{w in E_exc} m_w
+# with E_exc subset of V_K \ S, and S = {2}; m_2 is a subset of Z_(2), so a p=2 factor would
+# wrongly admit even integers.  (The p = 2 constants are kept in perprime.json as a control.)
+PATCH = (
+    (3, 15, 1, -3, 3),
+    (5, 15, -1, 5, 7),
+    (7, 35, 1, -7, 9),
+    (11, 33, -1, 11, 1),
+    (13, 65, 1, -13, 4),
+    (17, 51, -1, 17, 13),
+    (19, 133, -2, 19, 1),
+    (23, 69, -1, 23, 7),
+)
+E_EXC = tuple(p for p, *_ in PATCH)
 
 
 def _A(a):
@@ -48,7 +68,6 @@ def _Phat(a, b, X, tau, y, r, s):
 
 def _P0(a, b, X, tau, y, r, s):
     A = _A(a)
-    D = _D(a, b, X)
     d = _delta(a, tau)
     B = b * PI
     return -d * A * y * y - 16 * B * (r * r - A * s * s) - 16
@@ -60,67 +79,38 @@ def _F_Phi(a, b, b1, sigma, upsilon):
 
 def _F_Theta(a, b, X, y, r, s, zeta, zetap):
     acc = Q(1)
+    D = _D(a, b, X)
     for tau in LAMBDA:
         d = _delta(a, tau)
-        D = _D(a, b, X)
         p1 = d * zeta - 1
         p3 = D * zetap - 1
         acc *= p1 * p1 + _Phat(a, b, X, tau, y, r, s) ** 2 + (p3 * _P0(a, b, X, tau, y, r, s)) ** 2
     return acc
 
 
-def _F_patch_p2(X, y, r, s):
-    """x in Z_(2) <=> x = 0 or 10x^2(7 + 5x1 - 5x1^2 - 2x2^2 - 2x2x3 + 2x3^2) = 1 ; witnesses (y,r,s)."""
-    form = 7 + 5 * y - 5 * y * y - 2 * r * r - 2 * r * s + 2 * s * s
-    return 10 * X * X * form - 1
+def F_p(p, pi_p, A_p, B_p, a_p, X, y, r, s):
+    """pi_p X^2 [(1+4A)(y - y^2) + (a - A) - B(r^2 + r s - A s^2)] - p^2."""
+    D = 1 + 4 * A_p
+    bracket = D * (y - y * y) + (a_p - A_p) - B_p * (r * r + r * s - A_p * s * s)
+    return pi_p * X * X * bracket - p * p
+
+
+def _F_patch(X, y, r, s):
+    acc = Q(1)
+    for consts in PATCH:
+        acc *= F_p(*consts, X, y, r, s)
+    return acc
 
 
 def evaluate(X, w):
     """w = dict(a,b,y,r,s,zeta,zetap,b1,sigma,upsilon,iota)."""
     X = Q(X)
-    a, b, y, r, s = (Q(w["a"]), Q(w["b"]), Q(w["y"]), Q(w["r"]), Q(w["s"]))
+    a, b, y, r, s = (Q(w[k]) for k in ("a", "b", "y", "r", "s"))
     zeta, zetap = Q(w["zeta"]), Q(w["zetap"])
-    b1, sigma, upsilon, iota = Q(w["b1"]), Q(w["sigma"]), Q(w["upsilon"]), Q(w["iota"])
-    f_phi = _F_Phi(a, b, b1, sigma, upsilon)
-    f_theta = _F_Theta(a, b, X, y, r, s, zeta, zetap)
-    f_main = f_phi ** 2 + f_theta ** 2
-    f_patch = _F_patch_p2(X, y, r, s)          # only p = 2 ; BLOCKER: the other E_exc primes
+    b1, sigma, upsilon, iota = (Q(w[k]) for k in ("b1", "sigma", "upsilon", "iota"))
+    f_main = _F_Phi(a, b, b1, sigma, upsilon) ** 2 + _F_Theta(a, b, X, y, r, s, zeta, zetap) ** 2
+    f_patch = _F_patch(X, y, r, s)
     return (f_main * f_patch) ** 2 + (X * iota - 1) ** 2
-
-
-def selftest():
-    from assemble import Phat, P0, phi_poly, theta_factor, patch2
-    import random
-    from fractions import Fraction as F
-    rng = random.Random(3)
-    # the evaluator must agree with the sparse term lists of assemble.py
-    checks = {"phi": (phi_poly(), lambda w: _F_Phi(Q(w["a"]), Q(w["b"]), Q(w["b1"]),
-                                                  Q(w["sigma"]), Q(w["upsilon"]))),
-              "patch2": (patch2(), lambda w: _F_patch_p2(Q(w["X"]), Q(w["y"]), Q(w["r"]), Q(w["s"])))}
-    for tau in LAMBDA:
-        checks["Phat%d" % tau] = (Phat(tau), (lambda t: lambda w: _Phat(
-            Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"])))(tau))
-        checks["P0%d" % tau] = (P0(tau), (lambda t: lambda w: _P0(
-            Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"])))(tau))
-        checks["thetafac%d" % tau] = (theta_factor(tau), (lambda t: lambda w: (
-            (_delta(Q(w["a"]), t) * Q(w["zeta"]) - 1) ** 2
-            + _Phat(Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"])) ** 2
-            + ((_D(Q(w["a"]), Q(w["b"]), Q(w["X"])) * Q(w["zetap"]) - 1)
-               * _P0(Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"]))) ** 2))(tau))
-    for name, (p, fn) in checks.items():
-        for _ in range(20):
-            w = {k: F(rng.randrange(-6, 7), rng.choice([1, 1, 2, 3])) for k in
-                 ("X", "a", "b", "y", "r", "s", "zeta", "zetap", "b1", "sigma", "upsilon", "iota")}
-            v1 = p_eval(p, w)
-            v2 = fn(w)
-            assert v1 == v2, (name, w, v1, v2)
-        print("ok   evaluator == sparse term list for", name)
-    # F reproduces the fold structure
-    w = {k: F(0) for k in ("a", "b", "y", "r", "s", "zeta", "zetap", "b1", "sigma", "upsilon", "iota")}
-    w["X"] = F(3, 2)
-    w["iota"] = F(2, 3)
-    val = evaluate(F(3, 2), w)
-    print("sample evaluation at a degenerate witness, F =", val)
 
 
 def p_eval(p, w):
@@ -136,5 +126,44 @@ def p_eval(p, w):
     return tot
 
 
+def selftest():
+    import random
+
+    from assemble import P0, Phat, phi_poly, theta_factor
+    from assemble2 import patch_poly
+    rng = random.Random(3)
+    checks = {"phi": (phi_poly(), lambda w: _F_Phi(Q(w["a"]), Q(w["b"]), Q(w["b1"]),
+                                                  Q(w["sigma"]), Q(w["upsilon"])))}
+    for tau in LAMBDA:
+        checks["Phat%d" % tau] = (Phat(tau), (lambda t: lambda w: _Phat(
+            Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"])))(tau))
+        checks["P0_%d" % tau] = (P0(tau), (lambda t: lambda w: _P0(
+            Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"])))(tau))
+        checks["thetafac%d" % tau] = (theta_factor(tau), (lambda t: lambda w: (
+            (_delta(Q(w["a"]), t) * Q(w["zeta"]) - 1) ** 2
+            + _Phat(Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"])) ** 2
+            + ((_D(Q(w["a"]), Q(w["b"]), Q(w["X"])) * Q(w["zetap"]) - 1)
+               * _P0(Q(w["a"]), Q(w["b"]), Q(w["X"]), t, Q(w["y"]), Q(w["r"]), Q(w["s"]))) ** 2))(tau))
+    for consts in PATCH:
+        p, pi_p, A_p, B_p, a_p = consts
+        checks["patch_p%d" % p] = (patch_poly(A_p, B_p, a_p, pi_p, p),
+                                   (lambda c: lambda w: F_p(*c, Q(w["X"]), Q(w["y"]),
+                                                            Q(w["r"]), Q(w["s"])))(consts))
+    bad = 0
+    for name, (poly, fn) in sorted(checks.items()):
+        for _ in range(12):
+            w = {k: Q(rng.randrange(-6, 7), rng.choice([1, 1, 2, 3])) for k in
+                 ("X", "a", "b", "y", "r", "s", "zeta", "zetap", "b1", "sigma", "upsilon", "iota")}
+            if p_eval(poly, w) != fn(w):
+                bad += 1
+                print("MISMATCH", name, w)
+    print("leaf equivalence: %d objects x 12 random tuples, mismatches: %d" % (len(checks), bad))
+    w = {k: Q(0) for k in ("a", "b", "y", "r", "s", "zeta", "zetap", "b1", "sigma", "upsilon", "iota")}
+    w["X"], w["iota"] = Q(3, 2), Q(2, 3)
+    print("sample evaluation (degenerate witness, X=3/2): F =", evaluate(Q(3, 2), w))
+    return bad == 0
+
+
 if __name__ == "__main__":
-    selftest()
+    import sys
+    sys.exit(0 if selftest() else 1)
