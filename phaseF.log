@@ -1,0 +1,4 @@
+rounds: 1, ops: 0, pole-block ops: 0
+rows: 4552 -> 4552; vars: 4973 -> 4973
+max |row coeff|: 40 bits
+[0s] saved variant
