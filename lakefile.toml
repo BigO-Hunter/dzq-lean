@@ -1,9 +1,15 @@
 name = "dzq-lean-formal"
 version = "0.1.0"
-defaultTargets = ["DzqLean"]
+defaultTargets = ["CERT"]
 
 [[lean_lib]]
-name = "DzqLean"
+name = "Z2FORM"
+
+[[lean_lib]]
+name = "LEAVES"
+
+[[lean_lib]]
+name = "CERT"
 
 [[require]]
 name = "mathlib"
