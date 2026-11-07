@@ -1,6 +1,7 @@
 import Mathlib.Tactic
 
 set_option maxRecDepth 20000
+set_option maxHeartbeats 4000000
 
 /-!
 # LEAVES.lean — the 34 sha-pinned leaf term lists of the DZQ 11-variable polynomial
@@ -294,1021 +295,579 @@ mirroring the `F_eval.py` selftest size). -/
 /-! ## Per-leaf match theorems (the kernel-checked bridge). -/
 
 /-- `P0_tau1`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem P0_tau1_match : ∀ v : Fin 12 → ℤ, P0_tau1_F v = P0_tau1_T v := by
   intro v
   ring
 
 /-- `P0_tau11`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem P0_tau11_match : ∀ v : Fin 12 → ℤ, P0_tau11_F v = P0_tau11_T v := by
   intro v
   ring
 
 /-- `P0_tau17`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem P0_tau17_match : ∀ v : Fin 12 → ℤ, P0_tau17_F v = P0_tau17_T v := by
   intro v
   ring
 
 /-- `P0_tau19`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem P0_tau19_match : ∀ v : Fin 12 → ℤ, P0_tau19_F v = P0_tau19_T v := by
   intro v
   ring
 
 /-- `P0_tau27`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem P0_tau27_match : ∀ v : Fin 12 → ℤ, P0_tau27_F v = P0_tau27_T v := by
   intro v
   ring
 
 /-- `P0_tau3`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem P0_tau3_match : ∀ v : Fin 12 → ℤ, P0_tau3_F v = P0_tau3_T v := by
   intro v
   ring
 
 /-- `P0_tau33`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem P0_tau33_match : ∀ v : Fin 12 → ℤ, P0_tau33_F v = P0_tau33_T v := by
   intro v
   ring
 
 /-- `P0_tau49`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem P0_tau49_match : ∀ v : Fin 12 → ℤ, P0_tau49_F v = P0_tau49_T v := by
   intro v
   ring
 
 /-- `Phat_tau1`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem Phat_tau1_match : ∀ v : Fin 12 → ℤ, Phat_tau1_F v = Phat_tau1_T v := by
   intro v
   ring
 
 /-- `Phat_tau11`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem Phat_tau11_match : ∀ v : Fin 12 → ℤ, Phat_tau11_F v = Phat_tau11_T v := by
   intro v
   ring
 
 /-- `Phat_tau17`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem Phat_tau17_match : ∀ v : Fin 12 → ℤ, Phat_tau17_F v = Phat_tau17_T v := by
   intro v
   ring
 
 /-- `Phat_tau19`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem Phat_tau19_match : ∀ v : Fin 12 → ℤ, Phat_tau19_F v = Phat_tau19_T v := by
   intro v
   ring
 
 /-- `Phat_tau27`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem Phat_tau27_match : ∀ v : Fin 12 → ℤ, Phat_tau27_F v = Phat_tau27_T v := by
   intro v
   ring
 
 /-- `Phat_tau3`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem Phat_tau3_match : ∀ v : Fin 12 → ℤ, Phat_tau3_F v = Phat_tau3_T v := by
   intro v
   ring
 
 /-- `Phat_tau33`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem Phat_tau33_match : ∀ v : Fin 12 → ℤ, Phat_tau33_F v = Phat_tau33_T v := by
   intro v
   ring
 
 /-- `Phat_tau49`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem Phat_tau49_match : ∀ v : Fin 12 → ℤ, Phat_tau49_F v = Phat_tau49_T v := by
   intro v
   ring
 
 /-- `patch_p11`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem patch_p11_match : ∀ v : Fin 12 → ℤ, patch_p11_F v = patch_p11_T v := by
   intro v
   ring
 
 /-- `patch_p13`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem patch_p13_match : ∀ v : Fin 12 → ℤ, patch_p13_F v = patch_p13_T v := by
   intro v
   ring
 
 /-- `patch_p17`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem patch_p17_match : ∀ v : Fin 12 → ℤ, patch_p17_F v = patch_p17_T v := by
   intro v
   ring
 
 /-- `patch_p19`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem patch_p19_match : ∀ v : Fin 12 → ℤ, patch_p19_F v = patch_p19_T v := by
   intro v
   ring
 
 /-- `patch_p2`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem patch_p2_match : ∀ v : Fin 12 → ℤ, patch_p2_F v = patch_p2_T v := by
   intro v
   ring
 
 /-- `patch_p23`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem patch_p23_match : ∀ v : Fin 12 → ℤ, patch_p23_F v = patch_p23_T v := by
   intro v
   ring
 
 /-- `patch_p3`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem patch_p3_match : ∀ v : Fin 12 → ℤ, patch_p3_F v = patch_p3_T v := by
   intro v
   ring
 
 /-- `patch_p5`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem patch_p5_match : ∀ v : Fin 12 → ℤ, patch_p5_F v = patch_p5_T v := by
   intro v
   ring
 
 /-- `patch_p7`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem patch_p7_match : ∀ v : Fin 12 → ℤ, patch_p7_F v = patch_p7_T v := by
   intro v
   ring
 
 /-- `phi`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem phi_match : ∀ v : Fin 12 → ℤ, phi_F v = phi_T v := by
   intro v
   ring
 
 /-- `thetafac_tau1`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem thetafac_tau1_match : ∀ v : Fin 12 → ℤ, thetafac_tau1_F v = thetafac_tau1_T v := by
   intro v
   ring
 
 /-- `thetafac_tau11`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem thetafac_tau11_match : ∀ v : Fin 12 → ℤ, thetafac_tau11_F v = thetafac_tau11_T v := by
   intro v
   ring
 
 /-- `thetafac_tau17`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem thetafac_tau17_match : ∀ v : Fin 12 → ℤ, thetafac_tau17_F v = thetafac_tau17_T v := by
   intro v
   ring
 
 /-- `thetafac_tau19`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem thetafac_tau19_match : ∀ v : Fin 12 → ℤ, thetafac_tau19_F v = thetafac_tau19_T v := by
   intro v
   ring
 
 /-- `thetafac_tau27`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem thetafac_tau27_match : ∀ v : Fin 12 → ℤ, thetafac_tau27_F v = thetafac_tau27_T v := by
   intro v
   ring
 
 /-- `thetafac_tau3`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem thetafac_tau3_match : ∀ v : Fin 12 → ℤ, thetafac_tau3_F v = thetafac_tau3_T v := by
   intro v
   ring
 
 /-- `thetafac_tau33`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem thetafac_tau33_match : ∀ v : Fin 12 → ℤ, thetafac_tau33_F v = thetafac_tau33_T v := by
   intro v
   ring
 
 /-- `thetafac_tau49`: the recipe formula equals the sha-pinned term list at every integer assignment. -/
-set_option maxHeartbeats 4000000 in
 theorem thetafac_tau49_match : ∀ v : Fin 12 → ℤ, thetafac_tau49_F v = thetafac_tau49_T v := by
   intro v
   ring
-set_option maxHeartbeats 4000000 in
 example : P0_tau1_T (pt 0) = P0_tau1_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau1_T (pt 1) = P0_tau1_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau1_T (pt 2) = P0_tau1_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau1_T (pt 3) = P0_tau1_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau1_T (pt 4) = P0_tau1_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau1_T (pt 5) = P0_tau1_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau1_T (pt 6) = P0_tau1_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau1_T (pt 7) = P0_tau1_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau1_T (pt 8) = P0_tau1_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau1_T (pt 9) = P0_tau1_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau1_T (pt 10) = P0_tau1_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau1_T (pt 11) = P0_tau1_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau11_T (pt 0) = P0_tau11_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau11_T (pt 1) = P0_tau11_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau11_T (pt 2) = P0_tau11_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau11_T (pt 3) = P0_tau11_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau11_T (pt 4) = P0_tau11_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau11_T (pt 5) = P0_tau11_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau11_T (pt 6) = P0_tau11_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau11_T (pt 7) = P0_tau11_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau11_T (pt 8) = P0_tau11_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau11_T (pt 9) = P0_tau11_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau11_T (pt 10) = P0_tau11_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau11_T (pt 11) = P0_tau11_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau17_T (pt 0) = P0_tau17_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau17_T (pt 1) = P0_tau17_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau17_T (pt 2) = P0_tau17_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau17_T (pt 3) = P0_tau17_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau17_T (pt 4) = P0_tau17_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau17_T (pt 5) = P0_tau17_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau17_T (pt 6) = P0_tau17_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau17_T (pt 7) = P0_tau17_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau17_T (pt 8) = P0_tau17_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau17_T (pt 9) = P0_tau17_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau17_T (pt 10) = P0_tau17_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau17_T (pt 11) = P0_tau17_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau19_T (pt 0) = P0_tau19_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau19_T (pt 1) = P0_tau19_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau19_T (pt 2) = P0_tau19_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau19_T (pt 3) = P0_tau19_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau19_T (pt 4) = P0_tau19_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau19_T (pt 5) = P0_tau19_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau19_T (pt 6) = P0_tau19_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau19_T (pt 7) = P0_tau19_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau19_T (pt 8) = P0_tau19_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau19_T (pt 9) = P0_tau19_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau19_T (pt 10) = P0_tau19_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau19_T (pt 11) = P0_tau19_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau27_T (pt 0) = P0_tau27_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau27_T (pt 1) = P0_tau27_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau27_T (pt 2) = P0_tau27_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau27_T (pt 3) = P0_tau27_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau27_T (pt 4) = P0_tau27_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau27_T (pt 5) = P0_tau27_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau27_T (pt 6) = P0_tau27_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau27_T (pt 7) = P0_tau27_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau27_T (pt 8) = P0_tau27_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau27_T (pt 9) = P0_tau27_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau27_T (pt 10) = P0_tau27_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau27_T (pt 11) = P0_tau27_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau3_T (pt 0) = P0_tau3_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau3_T (pt 1) = P0_tau3_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau3_T (pt 2) = P0_tau3_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau3_T (pt 3) = P0_tau3_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau3_T (pt 4) = P0_tau3_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau3_T (pt 5) = P0_tau3_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau3_T (pt 6) = P0_tau3_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau3_T (pt 7) = P0_tau3_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau3_T (pt 8) = P0_tau3_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau3_T (pt 9) = P0_tau3_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau3_T (pt 10) = P0_tau3_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau3_T (pt 11) = P0_tau3_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau33_T (pt 0) = P0_tau33_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau33_T (pt 1) = P0_tau33_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau33_T (pt 2) = P0_tau33_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau33_T (pt 3) = P0_tau33_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau33_T (pt 4) = P0_tau33_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau33_T (pt 5) = P0_tau33_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau33_T (pt 6) = P0_tau33_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau33_T (pt 7) = P0_tau33_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau33_T (pt 8) = P0_tau33_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau33_T (pt 9) = P0_tau33_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau33_T (pt 10) = P0_tau33_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau33_T (pt 11) = P0_tau33_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau49_T (pt 0) = P0_tau49_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau49_T (pt 1) = P0_tau49_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau49_T (pt 2) = P0_tau49_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau49_T (pt 3) = P0_tau49_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau49_T (pt 4) = P0_tau49_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau49_T (pt 5) = P0_tau49_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau49_T (pt 6) = P0_tau49_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau49_T (pt 7) = P0_tau49_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau49_T (pt 8) = P0_tau49_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau49_T (pt 9) = P0_tau49_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau49_T (pt 10) = P0_tau49_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : P0_tau49_T (pt 11) = P0_tau49_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau1_T (pt 0) = Phat_tau1_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau1_T (pt 1) = Phat_tau1_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau1_T (pt 2) = Phat_tau1_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau1_T (pt 3) = Phat_tau1_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau1_T (pt 4) = Phat_tau1_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau1_T (pt 5) = Phat_tau1_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau1_T (pt 6) = Phat_tau1_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau1_T (pt 7) = Phat_tau1_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau1_T (pt 8) = Phat_tau1_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau1_T (pt 9) = Phat_tau1_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau1_T (pt 10) = Phat_tau1_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau1_T (pt 11) = Phat_tau1_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau11_T (pt 0) = Phat_tau11_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau11_T (pt 1) = Phat_tau11_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau11_T (pt 2) = Phat_tau11_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau11_T (pt 3) = Phat_tau11_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau11_T (pt 4) = Phat_tau11_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau11_T (pt 5) = Phat_tau11_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau11_T (pt 6) = Phat_tau11_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau11_T (pt 7) = Phat_tau11_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau11_T (pt 8) = Phat_tau11_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau11_T (pt 9) = Phat_tau11_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau11_T (pt 10) = Phat_tau11_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau11_T (pt 11) = Phat_tau11_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau17_T (pt 0) = Phat_tau17_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau17_T (pt 1) = Phat_tau17_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau17_T (pt 2) = Phat_tau17_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau17_T (pt 3) = Phat_tau17_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau17_T (pt 4) = Phat_tau17_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau17_T (pt 5) = Phat_tau17_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau17_T (pt 6) = Phat_tau17_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau17_T (pt 7) = Phat_tau17_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau17_T (pt 8) = Phat_tau17_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau17_T (pt 9) = Phat_tau17_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau17_T (pt 10) = Phat_tau17_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau17_T (pt 11) = Phat_tau17_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau19_T (pt 0) = Phat_tau19_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau19_T (pt 1) = Phat_tau19_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau19_T (pt 2) = Phat_tau19_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau19_T (pt 3) = Phat_tau19_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau19_T (pt 4) = Phat_tau19_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau19_T (pt 5) = Phat_tau19_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau19_T (pt 6) = Phat_tau19_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau19_T (pt 7) = Phat_tau19_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau19_T (pt 8) = Phat_tau19_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau19_T (pt 9) = Phat_tau19_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau19_T (pt 10) = Phat_tau19_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau19_T (pt 11) = Phat_tau19_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau27_T (pt 0) = Phat_tau27_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau27_T (pt 1) = Phat_tau27_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau27_T (pt 2) = Phat_tau27_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau27_T (pt 3) = Phat_tau27_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau27_T (pt 4) = Phat_tau27_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau27_T (pt 5) = Phat_tau27_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau27_T (pt 6) = Phat_tau27_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau27_T (pt 7) = Phat_tau27_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau27_T (pt 8) = Phat_tau27_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau27_T (pt 9) = Phat_tau27_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau27_T (pt 10) = Phat_tau27_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau27_T (pt 11) = Phat_tau27_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau3_T (pt 0) = Phat_tau3_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau3_T (pt 1) = Phat_tau3_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau3_T (pt 2) = Phat_tau3_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau3_T (pt 3) = Phat_tau3_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau3_T (pt 4) = Phat_tau3_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau3_T (pt 5) = Phat_tau3_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau3_T (pt 6) = Phat_tau3_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau3_T (pt 7) = Phat_tau3_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau3_T (pt 8) = Phat_tau3_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau3_T (pt 9) = Phat_tau3_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau3_T (pt 10) = Phat_tau3_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau3_T (pt 11) = Phat_tau3_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau33_T (pt 0) = Phat_tau33_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau33_T (pt 1) = Phat_tau33_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau33_T (pt 2) = Phat_tau33_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau33_T (pt 3) = Phat_tau33_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau33_T (pt 4) = Phat_tau33_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau33_T (pt 5) = Phat_tau33_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau33_T (pt 6) = Phat_tau33_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau33_T (pt 7) = Phat_tau33_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau33_T (pt 8) = Phat_tau33_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau33_T (pt 9) = Phat_tau33_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau33_T (pt 10) = Phat_tau33_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau33_T (pt 11) = Phat_tau33_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau49_T (pt 0) = Phat_tau49_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau49_T (pt 1) = Phat_tau49_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau49_T (pt 2) = Phat_tau49_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau49_T (pt 3) = Phat_tau49_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau49_T (pt 4) = Phat_tau49_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau49_T (pt 5) = Phat_tau49_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau49_T (pt 6) = Phat_tau49_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau49_T (pt 7) = Phat_tau49_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau49_T (pt 8) = Phat_tau49_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau49_T (pt 9) = Phat_tau49_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau49_T (pt 10) = Phat_tau49_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : Phat_tau49_T (pt 11) = Phat_tau49_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p11_T (pt 0) = patch_p11_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p11_T (pt 1) = patch_p11_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p11_T (pt 2) = patch_p11_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p11_T (pt 3) = patch_p11_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p11_T (pt 4) = patch_p11_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p11_T (pt 5) = patch_p11_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p11_T (pt 6) = patch_p11_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p11_T (pt 7) = patch_p11_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p11_T (pt 8) = patch_p11_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p11_T (pt 9) = patch_p11_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p11_T (pt 10) = patch_p11_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p11_T (pt 11) = patch_p11_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p13_T (pt 0) = patch_p13_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p13_T (pt 1) = patch_p13_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p13_T (pt 2) = patch_p13_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p13_T (pt 3) = patch_p13_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p13_T (pt 4) = patch_p13_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p13_T (pt 5) = patch_p13_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p13_T (pt 6) = patch_p13_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p13_T (pt 7) = patch_p13_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p13_T (pt 8) = patch_p13_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p13_T (pt 9) = patch_p13_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p13_T (pt 10) = patch_p13_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p13_T (pt 11) = patch_p13_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p17_T (pt 0) = patch_p17_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p17_T (pt 1) = patch_p17_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p17_T (pt 2) = patch_p17_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p17_T (pt 3) = patch_p17_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p17_T (pt 4) = patch_p17_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p17_T (pt 5) = patch_p17_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p17_T (pt 6) = patch_p17_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p17_T (pt 7) = patch_p17_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p17_T (pt 8) = patch_p17_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p17_T (pt 9) = patch_p17_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p17_T (pt 10) = patch_p17_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p17_T (pt 11) = patch_p17_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p19_T (pt 0) = patch_p19_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p19_T (pt 1) = patch_p19_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p19_T (pt 2) = patch_p19_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p19_T (pt 3) = patch_p19_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p19_T (pt 4) = patch_p19_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p19_T (pt 5) = patch_p19_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p19_T (pt 6) = patch_p19_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p19_T (pt 7) = patch_p19_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p19_T (pt 8) = patch_p19_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p19_T (pt 9) = patch_p19_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p19_T (pt 10) = patch_p19_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p19_T (pt 11) = patch_p19_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p2_T (pt 0) = patch_p2_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p2_T (pt 1) = patch_p2_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p2_T (pt 2) = patch_p2_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p2_T (pt 3) = patch_p2_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p2_T (pt 4) = patch_p2_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p2_T (pt 5) = patch_p2_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p2_T (pt 6) = patch_p2_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p2_T (pt 7) = patch_p2_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p2_T (pt 8) = patch_p2_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p2_T (pt 9) = patch_p2_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p2_T (pt 10) = patch_p2_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p2_T (pt 11) = patch_p2_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p23_T (pt 0) = patch_p23_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p23_T (pt 1) = patch_p23_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p23_T (pt 2) = patch_p23_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p23_T (pt 3) = patch_p23_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p23_T (pt 4) = patch_p23_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p23_T (pt 5) = patch_p23_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p23_T (pt 6) = patch_p23_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p23_T (pt 7) = patch_p23_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p23_T (pt 8) = patch_p23_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p23_T (pt 9) = patch_p23_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p23_T (pt 10) = patch_p23_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p23_T (pt 11) = patch_p23_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p3_T (pt 0) = patch_p3_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p3_T (pt 1) = patch_p3_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p3_T (pt 2) = patch_p3_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p3_T (pt 3) = patch_p3_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p3_T (pt 4) = patch_p3_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p3_T (pt 5) = patch_p3_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p3_T (pt 6) = patch_p3_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p3_T (pt 7) = patch_p3_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p3_T (pt 8) = patch_p3_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p3_T (pt 9) = patch_p3_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p3_T (pt 10) = patch_p3_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p3_T (pt 11) = patch_p3_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p5_T (pt 0) = patch_p5_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p5_T (pt 1) = patch_p5_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p5_T (pt 2) = patch_p5_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p5_T (pt 3) = patch_p5_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p5_T (pt 4) = patch_p5_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p5_T (pt 5) = patch_p5_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p5_T (pt 6) = patch_p5_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p5_T (pt 7) = patch_p5_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p5_T (pt 8) = patch_p5_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p5_T (pt 9) = patch_p5_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p5_T (pt 10) = patch_p5_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p5_T (pt 11) = patch_p5_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p7_T (pt 0) = patch_p7_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p7_T (pt 1) = patch_p7_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p7_T (pt 2) = patch_p7_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p7_T (pt 3) = patch_p7_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p7_T (pt 4) = patch_p7_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p7_T (pt 5) = patch_p7_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p7_T (pt 6) = patch_p7_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p7_T (pt 7) = patch_p7_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p7_T (pt 8) = patch_p7_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p7_T (pt 9) = patch_p7_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p7_T (pt 10) = patch_p7_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : patch_p7_T (pt 11) = patch_p7_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : phi_T (pt 0) = phi_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : phi_T (pt 1) = phi_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : phi_T (pt 2) = phi_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : phi_T (pt 3) = phi_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : phi_T (pt 4) = phi_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : phi_T (pt 5) = phi_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : phi_T (pt 6) = phi_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : phi_T (pt 7) = phi_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : phi_T (pt 8) = phi_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : phi_T (pt 9) = phi_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : phi_T (pt 10) = phi_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : phi_T (pt 11) = phi_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau1_T (pt 0) = thetafac_tau1_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau1_T (pt 1) = thetafac_tau1_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau1_T (pt 2) = thetafac_tau1_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau1_T (pt 3) = thetafac_tau1_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau1_T (pt 4) = thetafac_tau1_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau1_T (pt 5) = thetafac_tau1_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau1_T (pt 6) = thetafac_tau1_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau1_T (pt 7) = thetafac_tau1_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau1_T (pt 8) = thetafac_tau1_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau1_T (pt 9) = thetafac_tau1_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau1_T (pt 10) = thetafac_tau1_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau1_T (pt 11) = thetafac_tau1_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau11_T (pt 0) = thetafac_tau11_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau11_T (pt 1) = thetafac_tau11_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau11_T (pt 2) = thetafac_tau11_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau11_T (pt 3) = thetafac_tau11_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau11_T (pt 4) = thetafac_tau11_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau11_T (pt 5) = thetafac_tau11_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau11_T (pt 6) = thetafac_tau11_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau11_T (pt 7) = thetafac_tau11_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau11_T (pt 8) = thetafac_tau11_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau11_T (pt 9) = thetafac_tau11_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau11_T (pt 10) = thetafac_tau11_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau11_T (pt 11) = thetafac_tau11_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau17_T (pt 0) = thetafac_tau17_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau17_T (pt 1) = thetafac_tau17_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau17_T (pt 2) = thetafac_tau17_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau17_T (pt 3) = thetafac_tau17_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau17_T (pt 4) = thetafac_tau17_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau17_T (pt 5) = thetafac_tau17_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau17_T (pt 6) = thetafac_tau17_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau17_T (pt 7) = thetafac_tau17_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau17_T (pt 8) = thetafac_tau17_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau17_T (pt 9) = thetafac_tau17_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau17_T (pt 10) = thetafac_tau17_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau17_T (pt 11) = thetafac_tau17_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau19_T (pt 0) = thetafac_tau19_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau19_T (pt 1) = thetafac_tau19_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau19_T (pt 2) = thetafac_tau19_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau19_T (pt 3) = thetafac_tau19_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau19_T (pt 4) = thetafac_tau19_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau19_T (pt 5) = thetafac_tau19_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau19_T (pt 6) = thetafac_tau19_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau19_T (pt 7) = thetafac_tau19_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau19_T (pt 8) = thetafac_tau19_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau19_T (pt 9) = thetafac_tau19_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau19_T (pt 10) = thetafac_tau19_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau19_T (pt 11) = thetafac_tau19_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau27_T (pt 0) = thetafac_tau27_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau27_T (pt 1) = thetafac_tau27_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau27_T (pt 2) = thetafac_tau27_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau27_T (pt 3) = thetafac_tau27_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau27_T (pt 4) = thetafac_tau27_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau27_T (pt 5) = thetafac_tau27_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau27_T (pt 6) = thetafac_tau27_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau27_T (pt 7) = thetafac_tau27_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau27_T (pt 8) = thetafac_tau27_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau27_T (pt 9) = thetafac_tau27_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau27_T (pt 10) = thetafac_tau27_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau27_T (pt 11) = thetafac_tau27_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau3_T (pt 0) = thetafac_tau3_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau3_T (pt 1) = thetafac_tau3_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau3_T (pt 2) = thetafac_tau3_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau3_T (pt 3) = thetafac_tau3_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau3_T (pt 4) = thetafac_tau3_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau3_T (pt 5) = thetafac_tau3_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau3_T (pt 6) = thetafac_tau3_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau3_T (pt 7) = thetafac_tau3_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau3_T (pt 8) = thetafac_tau3_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau3_T (pt 9) = thetafac_tau3_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau3_T (pt 10) = thetafac_tau3_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau3_T (pt 11) = thetafac_tau3_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau33_T (pt 0) = thetafac_tau33_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau33_T (pt 1) = thetafac_tau33_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau33_T (pt 2) = thetafac_tau33_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau33_T (pt 3) = thetafac_tau33_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau33_T (pt 4) = thetafac_tau33_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau33_T (pt 5) = thetafac_tau33_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau33_T (pt 6) = thetafac_tau33_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau33_T (pt 7) = thetafac_tau33_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau33_T (pt 8) = thetafac_tau33_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau33_T (pt 9) = thetafac_tau33_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau33_T (pt 10) = thetafac_tau33_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau33_T (pt 11) = thetafac_tau33_F (pt 11) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau49_T (pt 0) = thetafac_tau49_F (pt 0) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau49_T (pt 1) = thetafac_tau49_F (pt 1) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau49_T (pt 2) = thetafac_tau49_F (pt 2) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau49_T (pt 3) = thetafac_tau49_F (pt 3) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau49_T (pt 4) = thetafac_tau49_F (pt 4) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau49_T (pt 5) = thetafac_tau49_F (pt 5) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau49_T (pt 6) = thetafac_tau49_F (pt 6) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau49_T (pt 7) = thetafac_tau49_F (pt 7) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau49_T (pt 8) = thetafac_tau49_F (pt 8) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau49_T (pt 9) = thetafac_tau49_F (pt 9) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau49_T (pt 10) = thetafac_tau49_F (pt 10) := by decide
-set_option maxHeartbeats 4000000 in
 example : thetafac_tau49_T (pt 11) = thetafac_tau49_F (pt 11) := by decide

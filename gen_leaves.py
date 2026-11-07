@@ -75,6 +75,7 @@ def lean_int(n):
 HEADER = r'''import Mathlib.Tactic
 
 set_option maxRecDepth 20000
+set_option maxHeartbeats 4000000
 
 /-!
 # LEAVES.lean — the 34 sha-pinned leaf term lists of the DZQ 11-variable polynomial
@@ -233,8 +234,7 @@ def main():
         out.append(f"def {name}_T (v : Fin 12 → ℤ) : ℤ := {term_expr(terms)}\n")
         tail.append(f"\n/-- `{name}`: the recipe formula equals the sha-pinned term list "
                     f"at every integer assignment. -/\n")
-        tail.append(f"set_option maxHeartbeats 4000000 in\n"
-                    f"theorem {name}_match : ∀ v : Fin 12 → ℤ, {cf} v = {name}_T v := by\n"
+        tail.append(f"theorem {name}_match : ∀ v : Fin 12 → ℤ, {cf} v = {name}_T v := by\n"
                     f"  intro v\n  ring\n")
 
     out.append("\n/-! ## Compact wrappers (one per leaf, from the recipe). -/\n")
@@ -254,7 +254,6 @@ def main():
             cf = f"patch_p{k}_F"
         for i in range(12):
             tail.append(
-                f"set_option maxHeartbeats 4000000 in\n"
                 f"example : {name}_T (pt {i}) = {cf} (pt {i}) := by decide\n")
 
     with open(OUT, "w") as f:
