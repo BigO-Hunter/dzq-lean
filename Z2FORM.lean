@@ -64,7 +64,7 @@ theorem z2_lhs_bridge (x1 x2 x3 : ℚ) : zL x1 x2 x3 + 8 = zW x1 x2 x3 := by
 /-- **Substitution theorem (cleared form).** For x ≠ 0, the G2 equation is equivalent to
 `zL·(10x²) = 1 − 80x²`, i.e. to `zL = 1/(10x²) − 8` — the unsimplified Prop 3.6(iii)
 instance at d = −(8 − (10x²)⁻¹).  Inverse-free, so every step is ring/linarith. -/
-theorem z2_eq_prop36_cleared (x x1 x2 x3 : ℚ) (hx : x ≠ 0) :
+theorem z2_eq_prop36_cleared (x x1 x2 x3 : ℚ) (_hx : x ≠ 0) :
     Z2Eq x x1 x2 x3 ↔ zL x1 x2 x3 * (10 * x ^ 2) = 1 - 80 * x ^ 2 := by
   constructor
   · intro h
@@ -96,7 +96,7 @@ theorem z2_eq_prop36 (x x1 x2 x3 : ℚ) (hx : x ≠ 0) :
   · intro h
     have h2 := key.mp h
     have h3 : zL x1 x2 x3 = (1 - 80 * x ^ 2) / (10 * x ^ 2) := by
-      rw [← eq_div_iff hx2]
+      rw [eq_div_iff hx2]
       exact h2
     have e : (1 - 80 * x ^ 2) / (10 * x ^ 2) = -(8 - 1 / (10 * x ^ 2)) := by
       field_simp
@@ -128,7 +128,15 @@ theorem z2_cleared (A B P Q R S : ℚ) (hB : B ≠ 0) (hQ : Q ≠ 0) :
     field_simp
     linarith [h]
 
-/-! ## Witness certificates (kernel `decide` on the cleared identity) -/
+/-! ## Witness certificates (kernel `norm_num` on the cleared identity) -/
+
+/-- Bridge: a cleared integer identity at `(A,B,P,Q,R,S)` gives `Z2Def x` for `x = A/B`. -/
+theorem z2_of_cleared {A B P Q R S : ℚ} (x : ℚ) (hx : x = A / B) (hB : B ≠ 0) (hQ : Q ≠ 0)
+    (h : 10 * A ^ 2 * (7 * Q ^ 2 + 5 * P * Q - 5 * P ^ 2 - 2 * R ^ 2 - 2 * R * S + 2 * S ^ 2)
+      = B ^ 2 * Q ^ 2) : Z2Def x := by
+  refine Or.inr ⟨P / Q, R / Q, S / Q, ?_⟩
+  rw [hx]
+  exact (z2_cleared A B P Q R S hB hQ).mpr h
 
 /-- Witness: x = 1/5, (x1,x2,x3) = (1, 3/2, 0).  Cleared (Q = 2): both sides = 100. -/
 theorem z2_wit_cleared_1_5 :
@@ -136,53 +144,44 @@ theorem z2_wit_cleared_1_5 :
       = 5 ^ 2 * 2 ^ 2 := by norm_num
 
 /-- Hence x = 1/5 ∈ Z_(2) satisfies the formula. -/
-theorem z2_mem_one_fifth : Z2Def (1 / 5 : ℚ) := by
-  refine Or.inr ⟨1, 3 / 2, 0, ?_⟩
-  exact (z2_cleared 1 5 2 2 3 0 (by norm_num) (by norm_num)).mpr z2_wit_cleared_1_5
+theorem z2_mem_one_fifth : Z2Def (1 / 5 : ℚ) :=
+  z2_of_cleared (1 / 5) rfl (by norm_num) (by norm_num) z2_wit_cleared_1_5
 
 /-- Witness: x = 1, (x1,x2,x3) = (−3, −39/10, 24/5). -/
 theorem z2_wit_cleared_1 :
     (10:ℚ) * 1 ^ 2 * (7 * 10 ^ 2 + 5 * (-30) * 10 - 5 * (-30) ^ 2 - 2 * (-39) ^ 2
       - 2 * (-39) * 48 + 2 * 48 ^ 2) = 1 ^ 2 * 10 ^ 2 := by norm_num
 
-theorem z2_mem_one : Z2Def (1 : ℚ) := by
-  refine Or.inr ⟨-3, -39 / 10, 24 / 5, ?_⟩
-  exact (z2_cleared 1 1 (-30) 10 (-39) 48 (by norm_num) (by norm_num)).mpr z2_wit_cleared_1
+theorem z2_mem_one : Z2Def (1 : ℚ) :=
+  z2_of_cleared 1 (by norm_num : (1:ℚ) = 1 / 1) (by norm_num) (by norm_num) z2_wit_cleared_1
 
 /-- Witness: x = 3, (x1,x2,x3) = (−1, −19/30, −26/15). -/
 theorem z2_wit_cleared_3 :
     (10:ℚ) * 3 ^ 2 * (7 * 30 ^ 2 + 5 * (-30) * 30 - 5 * (-30) ^ 2 - 2 * (-19) ^ 2
       - 2 * (-19) * (-52) + 2 * (-52) ^ 2) = 1 ^ 2 * 30 ^ 2 := by norm_num
 
-theorem z2_mem_three : Z2Def (3 : ℚ) := by
-  refine Or.inr ⟨-1, -19 / 30, -26 / 15, ?_⟩
-  exact (z2_cleared 3 1 (-30) 30 (-19) (-52) (by norm_num) (by norm_num)).mpr z2_wit_cleared_3
+theorem z2_mem_three : Z2Def (3 : ℚ) :=
+  z2_of_cleared 3 (by norm_num : (3:ℚ) = 3 / 1) (by norm_num) (by norm_num) z2_wit_cleared_3
 
 /-- x = −3: the cleared identity is even in A, same witnesses. -/
-theorem z2_mem_neg_three : Z2Def (-3 : ℚ) := by
-  refine Or.inr ⟨-1, -19 / 30, -26 / 15, ?_⟩
-  exact (z2_cleared (-3) 1 (-30) 30 (-19) (-52) (by norm_num) (by norm_num)).mpr
-    z2_wit_cleared_3
+theorem z2_mem_neg_three : Z2Def (-3 : ℚ) :=
+  z2_of_cleared (-3) (by norm_num : (-3:ℚ) = -3 / 1) (by norm_num) (by norm_num) z2_wit_cleared_3
 
 /-- Witness: x = 1/3, (x1,x2,x3) = (−3, −21/5, 49/10). -/
 theorem z2_wit_cleared_third :
     (10:ℚ) * 1 ^ 2 * (7 * 10 ^ 2 + 5 * (-30) * 10 - 5 * (-30) ^ 2 - 2 * (-42) ^ 2
       - 2 * (-42) * 49 + 2 * 49 ^ 2) = 3 ^ 2 * 10 ^ 2 := by norm_num
 
-theorem z2_mem_third : Z2Def (1 / 3 : ℚ) := by
-  refine Or.inr ⟨-3, -21 / 5, 49 / 10, ?_⟩
-  exact (z2_cleared 1 3 (-30) 10 (-42) 49 (by norm_num) (by norm_num)).mpr
-    z2_wit_cleared_third
+theorem z2_mem_third : Z2Def (1 / 3 : ℚ) :=
+  z2_of_cleared (1 / 3) rfl (by norm_num) (by norm_num) z2_wit_cleared_third
 
 /-- Witness: x = 2/3, (x1,x2,x3) = (−3/2, −27/20, 11/5). -/
 theorem z2_wit_cleared_two_thirds :
     (10:ℚ) * 2 ^ 2 * (7 * 20 ^ 2 + 5 * (-30) * 20 - 5 * (-30) ^ 2 - 2 * (-27) ^ 2
       - 2 * (-27) * 44 + 2 * 44 ^ 2) = 3 ^ 2 * 20 ^ 2 := by norm_num
 
-theorem z2_mem_two_thirds : Z2Def (2 / 3 : ℚ) := by
-  refine Or.inr ⟨-3 / 2, -27 / 20, 11 / 5, ?_⟩
-  exact (z2_cleared 2 3 (-30) 20 (-27) 44 (by norm_num) (by norm_num)).mpr
-    z2_wit_cleared_two_thirds
+theorem z2_mem_two_thirds : Z2Def (2 / 3 : ℚ) :=
+  z2_of_cleared (2 / 3) rfl (by norm_num) (by norm_num) z2_wit_cleared_two_thirds
 
 /-- The x = 0 stratum. -/
 theorem z2_mem_zero : Z2Def (0 : ℚ) := Or.inl rfl
