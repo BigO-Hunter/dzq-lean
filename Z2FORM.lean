@@ -61,38 +61,53 @@ theorem z2_lhs_bridge (x1 x2 x3 : ℚ) : zL x1 x2 x3 + 8 = zW x1 x2 x3 := by
   simp only [zL, zW]
   ring
 
+/-- **Substitution theorem (cleared form).** For x ≠ 0, the G2 equation is equivalent to
+`zL·(10x²) = 1 − 80x²`, i.e. to `zL = 1/(10x²) − 8` — the unsimplified Prop 3.6(iii)
+instance at d = −(8 − (10x²)⁻¹).  Inverse-free, so every step is ring/linarith. -/
+theorem z2_eq_prop36_cleared (x x1 x2 x3 : ℚ) (hx : x ≠ 0) :
+    Z2Eq x x1 x2 x3 ↔ zL x1 x2 x3 * (10 * x ^ 2) = 1 - 80 * x ^ 2 := by
+  constructor
+  · intro h
+    have hw : 10 * x ^ 2 * zW x1 x2 x3 = 1 := by
+      simp only [Z2Eq] at h
+      linarith
+    have e0 : 10 * x ^ 2 * (zL x1 x2 x3 + 8) = 1 := by
+      rw [z2_lhs_bridge]
+      exact hw
+    ring_nf at e0 ⊢
+    linarith [e0]
+  · intro h
+    have hw : 10 * x ^ 2 * zW x1 x2 x3 - 1 = 0 := by
+      rw [← z2_lhs_bridge]
+      have e0 : 10 * x ^ 2 * (zL x1 x2 x3 + 8) = 1 := by
+        ring_nf
+        linarith [h]
+      linarith [e0]
+    exact hw
+
 /-- **Substitution theorem.** For x ≠ 0, the cleared G2 equation is equivalent to the
 unsimplified Prop 3.6(iii) instance with d = −(8 − (10x²)⁻¹) — the exact substitution
 `c = 1, d = −(a − (10x²)^{-1}), A = 1, B = 2` claimed in `G2_REDERIVATION.md` §1. -/
 theorem z2_eq_prop36 (x x1 x2 x3 : ℚ) (hx : x ≠ 0) :
     Z2Eq x x1 x2 x3 ↔ zL x1 x2 x3 = -(8 - 1 / (10 * x ^ 2)) := by
   have hx2 : (10:ℚ) * x ^ 2 ≠ 0 := mul_ne_zero (by norm_num) (pow_ne_zero 2 hx)
+  have key := z2_eq_prop36_cleared x x1 x2 x3 hx
   constructor
   · intro h
-    have hw : 10 * x ^ 2 * zW x1 x2 x3 = 1 := by
-      simp only [Z2Eq] at h
-      linarith
-    have h2 : zL x1 x2 x3 * (10 * x ^ 2) = 1 - 80 * x ^ 2 := by
-      rw [mul_comm]
-      have e0 : 10 * x ^ 2 * (zL x1 x2 x3 + 8) = 1 := by
-        rw [z2_lhs_bridge]
-        exact hw
-      ring_nf at e0 ⊢
-      linarith [e0]
-    exact mul_right_cancel₀ hx2 (by rw [h2]; ring)
+    have h2 := key.mp h
+    have h3 : zL x1 x2 x3 = (1 - 80 * x ^ 2) / (10 * x ^ 2) := by
+      rw [← eq_div_iff hx2]
+      exact h2
+    have e : (1 - 80 * x ^ 2) / (10 * x ^ 2) = -(8 - 1 / (10 * x ^ 2)) := by
+      field_simp
+      all_goals ring
+    rw [h3, e]
   · intro h
-    have h2 : zL x1 x2 x3 * (10 * x ^ 2) = 1 - 80 * x ^ 2 := by
-      have h3 : zL x1 x2 x3 * (10 * x ^ 2)
-          = -(8 - 1 / (10 * x ^ 2)) * (10 * x ^ 2) := by rw [h]
-      rw [h3]
-      ring
-    have hw : 10 * x ^ 2 * zW x1 x2 x3 - 1 = 0 := by
-      rw [← z2_lhs_bridge]
-      have e0 : 10 * x ^ 2 * (zL x1 x2 x3 + 8) = 1 := by
-        ring_nf
-        linarith [h2]
-      linarith [e0]
-    exact hw
+    have h3 : zL x1 x2 x3 * (10 * x ^ 2) = 1 - 80 * x ^ 2 := by
+      rw [h]
+      field_simp
+      all_goals ring
+    exact key.mpr h3
 
 /-! ## Denominator clearing -/
 
@@ -100,16 +115,16 @@ theorem z2_eq_prop36 (x x1 x2 x3 : ℚ) (hx : x ≠ 0) :
 `Z2Eq (A/B) (P/Q) (R/Q) (S/Q)` is equivalent to the integer identity
 `10 * A^2 * (7Q^2 + 5PQ - 5P^2 - 2R^2 - 2RS + 2S^2) = B^2 * Q^2`. -/
 theorem z2_cleared (A B P Q R S : ℚ) (hB : B ≠ 0) (hQ : Q ≠ 0) :
-    (Z2Eq (A / B) (P / Q) (R / Q) (S / Q) ↔
+    ((10 : ℚ) * (A / B) ^ 2 * zW (P / Q) (R / Q) (S / Q) - 1 = 0 ↔
       10 * A ^ 2 * (7 * Q ^ 2 + 5 * P * Q - 5 * P ^ 2 - 2 * R ^ 2 - 2 * R * S + 2 * S ^ 2)
         = B ^ 2 * Q ^ 2) := by
   constructor
   · intro h
-    simp only [Z2Eq, zW] at h
+    simp only [zW] at h
     field_simp at h ⊢
     linarith [h]
   · intro h
-    simp only [Z2Eq, zW]
+    simp only [zW]
     field_simp
     linarith [h]
 
@@ -118,7 +133,7 @@ theorem z2_cleared (A B P Q R S : ℚ) (hB : B ≠ 0) (hQ : Q ≠ 0) :
 /-- Witness: x = 1/5, (x1,x2,x3) = (1, 3/2, 0).  Cleared (Q = 2): both sides = 100. -/
 theorem z2_wit_cleared_1_5 :
     (10:ℚ) * 1 ^ 2 * (7 * 2 ^ 2 + 5 * 2 * 2 - 5 * 2 ^ 2 - 2 * 3 ^ 2 - 2 * 3 * 0 + 2 * 0 ^ 2)
-      = 5 ^ 2 * 2 ^ 2 := by decide
+      = 5 ^ 2 * 2 ^ 2 := by norm_num
 
 /-- Hence x = 1/5 ∈ Z_(2) satisfies the formula. -/
 theorem z2_mem_one_fifth : Z2Def (1 / 5 : ℚ) := by
@@ -128,7 +143,7 @@ theorem z2_mem_one_fifth : Z2Def (1 / 5 : ℚ) := by
 /-- Witness: x = 1, (x1,x2,x3) = (−3, −39/10, 24/5). -/
 theorem z2_wit_cleared_1 :
     (10:ℚ) * 1 ^ 2 * (7 * 10 ^ 2 + 5 * (-30) * 10 - 5 * (-30) ^ 2 - 2 * (-39) ^ 2
-      - 2 * (-39) * 48 + 2 * 48 ^ 2) = 1 ^ 2 * 10 ^ 2 := by decide
+      - 2 * (-39) * 48 + 2 * 48 ^ 2) = 1 ^ 2 * 10 ^ 2 := by norm_num
 
 theorem z2_mem_one : Z2Def (1 : ℚ) := by
   refine Or.inr ⟨-3, -39 / 10, 24 / 5, ?_⟩
@@ -137,7 +152,7 @@ theorem z2_mem_one : Z2Def (1 : ℚ) := by
 /-- Witness: x = 3, (x1,x2,x3) = (−1, −19/30, −26/15). -/
 theorem z2_wit_cleared_3 :
     (10:ℚ) * 3 ^ 2 * (7 * 30 ^ 2 + 5 * (-30) * 30 - 5 * (-30) ^ 2 - 2 * (-19) ^ 2
-      - 2 * (-19) * (-52) + 2 * (-52) ^ 2) = 1 ^ 2 * 30 ^ 2 := by decide
+      - 2 * (-19) * (-52) + 2 * (-52) ^ 2) = 1 ^ 2 * 30 ^ 2 := by norm_num
 
 theorem z2_mem_three : Z2Def (3 : ℚ) := by
   refine Or.inr ⟨-1, -19 / 30, -26 / 15, ?_⟩
@@ -152,7 +167,7 @@ theorem z2_mem_neg_three : Z2Def (-3 : ℚ) := by
 /-- Witness: x = 1/3, (x1,x2,x3) = (−3, −21/5, 49/10). -/
 theorem z2_wit_cleared_third :
     (10:ℚ) * 1 ^ 2 * (7 * 10 ^ 2 + 5 * (-30) * 10 - 5 * (-30) ^ 2 - 2 * (-42) ^ 2
-      - 2 * (-42) * 49 + 2 * 49 ^ 2) = 3 ^ 2 * 10 ^ 2 := by decide
+      - 2 * (-42) * 49 + 2 * 49 ^ 2) = 3 ^ 2 * 10 ^ 2 := by norm_num
 
 theorem z2_mem_third : Z2Def (1 / 3 : ℚ) := by
   refine Or.inr ⟨-3, -21 / 5, 49 / 10, ?_⟩
@@ -162,7 +177,7 @@ theorem z2_mem_third : Z2Def (1 / 3 : ℚ) := by
 /-- Witness: x = 2/3, (x1,x2,x3) = (−3/2, −27/20, 11/5). -/
 theorem z2_wit_cleared_two_thirds :
     (10:ℚ) * 2 ^ 2 * (7 * 20 ^ 2 + 5 * (-30) * 20 - 5 * (-30) ^ 2 - 2 * (-27) ^ 2
-      - 2 * (-27) * 44 + 2 * 44 ^ 2) = 3 ^ 2 * 20 ^ 2 := by decide
+      - 2 * (-27) * 44 + 2 * 44 ^ 2) = 3 ^ 2 * 20 ^ 2 := by norm_num
 
 theorem z2_mem_two_thirds : Z2Def (2 / 3 : ℚ) := by
   refine Or.inr ⟨-3 / 2, -27 / 20, 11 / 5, ?_⟩
