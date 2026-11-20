@@ -9,7 +9,7 @@ import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-EXEC = os.path.expanduser("~/bigo-campaign/dzq-exec")
+EXEC = os.environ.get("DZQ_EXEC", os.path.join(os.path.dirname(__file__), "dzq-exec"))
 LEAVES = os.path.join(HERE, "LEAVES.lean")
 
 recipe = json.load(open(os.path.join(EXEC, "F_recipe.json")))

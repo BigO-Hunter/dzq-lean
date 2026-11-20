@@ -15,7 +15,7 @@ import json
 import os
 import sys
 
-EXEC = os.path.expanduser("~/bigo-campaign/dzq-exec")
+EXEC = os.environ.get("DZQ_EXEC", os.path.join(os.path.dirname(__file__), "dzq-exec"))
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "LEAVES.lean")
 
 # variable order: 0=X 1=a 2=b 3=y 4=r 5=s 6=zeta 7=zeta' 8=b1 9=sigma 10=upsilon 11=iota
