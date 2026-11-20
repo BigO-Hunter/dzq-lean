@@ -1,0 +1,120 @@
+
+=== S1_terms ===
+{
+  "path": "variantB/phi_variant.canonical.txt.gz",
+  "sha256": "d4364aab4d474c858119bcdf098dd2b005198c6de02407770bc9d509f2c3d705",
+  "size_bytes": 357916,
+  "total_lines": 73895,
+  "header": "# canonical Phi variant term list: '<coeff> <var>:<exp> ...' sorted by sparse monomial key",
+  "term_count": 73894,
+  "line_term_count": 73894,
+  "malformed": [],
+  "malformed_count": 0,
+  "unsorted_exponent_lines": 0,
+  "duplicate_monomial_lines": 0,
+  "zero_coefficient_lines": 0,
+  "degree_histogram": {
+    "0": 1,
+    "1": 513,
+    "2": 6290,
+    "3": 12923,
+    "4": 54167
+  },
+  "max_total_degree": 4,
+  "max_abs_coeff": 588648899754158404055169784165171200000,
+  "max_abs_coeff_bits": 129,
+  "var_index_max": 4921,
+  "distinct_vars_used": 4922,
+  "claimed": {
+    "terms": 72925,
+    "variables": 4973,
+    "degree": 4,
+    "max_abs_coeff": 685783949153203534233890,
+    "max_abs_coeff_lt_2_80": true
+  },
+  "measured_vs_claimed": {
+    "terms": "73894 vs 72925  DIFFERS",
+    "variables": "4922 vs 4973  DIFFERS",
+    "max_index_plus_one": 4922,
+    "degree": "4 vs 4  OK",
+    "max_abs_coeff": "588648899754158404055169784165171200000 vs 685783949153203534233890  DIFFERS",
+    "max_abs_coeff_lt_2_80": false,
+    "coeff_bit_length": 129
+  }
+}
+
+=== S2_residuals ===
+{
+  "rows": 4501,
+  "weights_len": 4501,
+  "distinct_weights": {
+    "1": 4501
+  },
+  "all_weights_one": true,
+  "degree_histogram": {
+    "1": 4,
+    "2": 4497
+  },
+  "max_row_degree": 2,
+  "terms_per_row_max": 18,
+  "max_abs_row_coeff": 17938308212496000000,
+  "sos_degree_bound": 4
+}
+
+=== S3_identity_exact ===
+{
+  "status": "EXACTLY-CHECKED",
+  "identity": "Phi == sum_i w_i * R_i^2  (weights from weights.json)",
+  "sum_of_squares_term_count": 73894,
+  "sum_of_squares_degree": 4,
+  "termlist_term_count": 73894,
+  "terms_only_in_sum_of_squares": 0,
+  "terms_only_in_termlist": 0,
+  "coefficient_mismatches": 0,
+  "sample": [],
+  "IDENTITY_HOLDS": true,
+  "sum_of_squares_content_sha256": "02a08c407e39c87791ed9d5fc078ad497bf7d3e3189c58294d788230505f2f5d",
+  "termlist_content_sha256": "02a08c407e39c87791ed9d5fc078ad497bf7d3e3189c58294d788230505f2f5d"
+}
+
+=== S5_certificate ===
+{
+  "status": "ERROR",
+  "error": "FileNotFoundError: [Errno 2] No such file or directory: 'variantB/package/certificate.jsonl.gz'"
+}
+
+=== S6_easy_direction ===
+{
+  "status": "NOT-REACHED (residual list is not a definition chain)",
+  "phi_nonnegativity": "EXACTLY-CHECKED by S3: Phi is a sum of squares with weights 1, so Phi >= 0 over R and Phi = 0 iff all R_i = 0",
+  "trivial_witness_all_zero": "Phi(0,...,0) equals Phi's constant term; if nonzero, w=0 is not a witness",
+  "triangular_sweep_steps_from_input_only": 11,
+  "triangular_sweep_variables_known": 12,
+  "triangular_sweep_variables_total": 4922,
+  "triangular_sweep_complete": false,
+  "note": "Forward substitution over the 4552 residuals determines only 12 of 4922 variables, so the q -> w witness map is NOT contained in residuals.json.gz. It lives in the transform chain's inverted elimination patches and in the source arithmetic theorem, which the release scopes out of the algebraic checker (evidence/final-verification.json: 'The source arithmetic theorem is not checked here')."
+}
+
+=== S7_selfreport_crosscheck ===
+{
+  "declared": {},
+  "measurable_by_this_checker": {
+    "rows": 4501,
+    "monomials": 73894,
+    "degree": 4,
+    "max_abs_coefficient": 588648899754158404055169784165171200000,
+    "variables": 4922,
+    "witnesses": 4921
+  },
+  "agree": false
+}
+
+=== VERDICT ===
+{
+  "terms_match_claims": false,
+  "identity_holds_exactly": true,
+  "weights_all_one": true,
+  "certificate_replay_matches_residuals": null,
+  "certificate_failures": 0,
+  "easy_direction": "NOT-REACHED (residual list is not a definition chain)"
+}

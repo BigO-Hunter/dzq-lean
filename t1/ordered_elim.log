@@ -1,0 +1,12 @@
+rows: 4501
+  500/4501 rows, pivots 500, deps 0  [0s]
+  1000/4501 rows, pivots 1000, deps 0  [0s]
+  1500/4501 rows, pivots 1500, deps 0  [0s]
+  2000/4501 rows, pivots 2000, deps 0  [0s]
+  2500/4501 rows, pivots 2500, deps 0  [0s]
+  3000/4501 rows, pivots 3000, deps 0  [0s]
+  3500/4501 rows, pivots 3500, deps 0  [0s]
+  4000/4501 rows, pivots 4000, deps 0  [0s]
+  4500/4501 rows, pivots 4500, deps 0  [0s]
+rank 4501, dependent 0  [0s]
+saved ordered_deps.json
