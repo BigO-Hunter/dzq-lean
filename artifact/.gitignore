@@ -1,0 +1,4 @@
+dl/*.zip
+dl/*.pdf
+work/
+__pycache__/
