@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """T4 probe step 1: locate each site's pole rows in the final residuals,
 verify module-local->global mapping, build the pole-local occurrence table."""
+import os
 import json, gzip, collections
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
 with gzip.open(f"{BASE}/residuals.json.gz") as f:
     res = json.load(f)
 cm = json.load(open(f"{BASE}/construction-map.json"))
@@ -94,5 +95,5 @@ for k, v in list(leak.items())[:5]:
 
 json.dump({"pole_blocks": [[p, fl, g10, ridx] for p, fl, g10, ridx in pole_globals],
            "occ": {str(k): v for k, v in occ.items()}},
-          open("/Users/dmitri.arkhipov/bigo-campaign/dzq-t1/pole_occ.json", "w"))
+          open(os.path.join(os.path.dirname(__file__), "/pole_occ.json"), "w"))
 print("\nsaved pole_occ.json")

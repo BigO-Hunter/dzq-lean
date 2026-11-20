@@ -3,9 +3,10 @@
 1. No residual is a linear difference r_i - r_j (+const) for any pair of the 37 r's.
 2. No two r's share an identical linear form (would let identification be sound).
 3. Count conic block sizes exactly for the ledger."""
+import os
 import json, gzip, collections, itertools
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
 with gzip.open(f"{BASE}/residuals.json.gz") as f:
     res = json.load(f)
 cm = json.load(open(f"{BASE}/construction-map.json"))

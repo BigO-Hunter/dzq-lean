@@ -7,12 +7,13 @@
 Then: sparse rank (re-sorting) on original + swept rows, with per-dependent-row
 multiplier vectors saved for exact-Q lift.
 """
+import os
 import json, gzip, collections, sys, time
 from fractions import Fraction
 
 sys.set_int_max_str_digits(100000)
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
-OUT = "/Users/dmitri.arkhipov/bigo-campaign/dzq-t1"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
+OUT = os.path.dirname(__file__)
 CAP = 1 << 64
 
 with gzip.open(f"{BASE}/residuals.json.gz") as f:

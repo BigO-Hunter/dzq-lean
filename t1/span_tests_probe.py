@@ -5,11 +5,12 @@
 (c) r0 + r1 combo -> must zero;
 (d) row 0 with one coefficient perturbed -> must NOT zero (negative control);
 (e) 10 random sparse rows -> must NOT zero."""
+import os
 import json, gzip, collections, random
 P = (1 << 61) - 1
 
 orig = [ {tuple(sorted(m)): c for c, m in row}
-         for row in json.load(gzip.open("/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973/residuals.json.gz")) ]
+         for row in json.load(gzip.open(os.path.join(os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973"), "/residuals.json.gz"))) ]
 
 import time; t0 = time.time(); print("loaded", flush=True)
 coldeg = collections.Counter()

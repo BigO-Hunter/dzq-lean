@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Extract Z_definition construction_log entries around each site instantiation,
 to see what each site's r input is named (root role vs fresh variable)."""
+import os
 import json
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
 m = json.load(open(f"{BASE}/source/modules/Z_definition.json"))
 print("keys:", list(m.keys()))
 log = m.get("construction_log", [])

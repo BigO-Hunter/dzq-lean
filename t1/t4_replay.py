@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Replay certificate patches (provenance only), locate pole blocks in final rows.
 No re-derivation: patches are the shipped row contents; we only need identity."""
+import os
 import json, gzip, collections
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
 with gzip.open(f"{BASE}/certificate.jsonl.gz") as f:
     events = [json.loads(l) for l in f]
 
@@ -76,5 +77,5 @@ for it in poles:
         print("  exp[0]:", json.dumps(exp[0])[:160])
 
 print(f"pole blocks shape-verified in final space: {verified_shapes}/37")
-json.dump(final_pole_rows, open("/Users/dmitri.arkhipov/bigo-campaign/dzq-t1/final_pole_rows.json", "w"))
+json.dump(final_pole_rows, open(os.path.join(os.path.dirname(__file__), "/final_pole_rows.json"), "w"))
 print("saved final_pole_rows.json")

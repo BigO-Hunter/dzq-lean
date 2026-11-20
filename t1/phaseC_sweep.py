@@ -9,10 +9,11 @@ integral and deg <= 2. Zero-set projection argument identical to the
 release's own 'eliminate' certificate op. Weights stay 1 (row scaling only
 changes R_i, not the zero set of Sum R_i^2).
 """
+import os
 import json, gzip, collections
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
-OUT = "/Users/dmitri.arkhipov/bigo-campaign/dzq-t1"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
+OUT = os.path.dirname(__file__)
 with gzip.open(f"{BASE}/residuals.json.gz") as f:
     rows_raw = json.load(f)
 rows = [ {tuple(sorted(m)): c for c, m in row} for row in rows_raw ]

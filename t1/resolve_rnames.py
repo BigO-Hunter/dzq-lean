@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Resolve the 37 conic r-variables to Z_definition log names."""
+import os
 import json
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
 m = json.load(open(f"{BASE}/source/modules/Z_definition.json"))
 log = m["construction_log"]
 FIRST_LOCAL = 27

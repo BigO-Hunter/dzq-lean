@@ -8,10 +8,11 @@ was R becomes unconstrained and leaves the system. Both directions of the iff:
   - reduced solution extends: v := -rest/c (rational), freed vars arbitrary.
 Consistent with the release's "rational zero projection exactly Z".
 """
+import os
 import json, gzip, collections
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
-OUT = "/Users/dmitri.arkhipov/bigo-campaign/dzq-t1"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
+OUT = os.path.dirname(__file__)
 with gzip.open(f"{BASE}/residuals.json.gz") as f:
     rows_raw = json.load(f)
 rows = [ {tuple(mon): c for c, mon in row} for row in rows_raw ]

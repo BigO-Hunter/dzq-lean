@@ -6,11 +6,12 @@ ordered after col, so min(cur) strictly increases. Controls plant dependencies
 that FORCE the reduce branch, so a silent never-reduces pass cannot pass.
 Outputs rank + dependent-row multiplier vectors (excluded-lead convention:
 mult satisfies R_d + sum_i mult[i] * R_i == 0 mod P with mult[d] = 1)."""
+import os
 import json, gzip, sys, collections, time
 
 sys.set_int_max_str_digits(200000)
 P = (1 << 61) - 1
-OUT = "/Users/dmitri.arkhipov/bigo-campaign/dzq-t1"
+OUT = os.path.dirname(__file__)
 
 def col_order(rows):
     coldeg = collections.Counter()
@@ -64,7 +65,7 @@ def main():
                  for row in json.load(gzip.open(f"{OUT}/variantB_residuals.json.gz")) ]
     else:
         rows = [ {tuple(sorted(m)): c for c, m in row}
-                 for row in json.load(gzip.open("/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973/residuals.json.gz")) ]
+                 for row in json.load(gzip.open(os.path.join(os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973"), "/residuals.json.gz"))) ]
     print(f"system: {which}, rows {len(rows)}", flush=True)
     t0 = time.time()
     colid = col_order(rows)

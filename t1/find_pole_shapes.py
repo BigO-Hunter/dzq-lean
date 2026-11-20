@@ -5,9 +5,10 @@ Module shapes (module-local; coeffs are what matter):
   E3: -17*r + 51*e*c + p^2 - 34*c -> linear -17, linear -34, quad 51, square +1
   E7: -867*w^2 + 34*w*j - 17*q*k + j^2 -> coeffs {34, -17, -867}
 Search final rows for coeff multisets matching each shape."""
+import os
 import json, gzip, collections
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
 with gzip.open(f"{BASE}/residuals.json.gz") as f:
     rows_raw = json.load(f)
 rows = [ {tuple(m): c for c, m in row} for row in rows_raw ]

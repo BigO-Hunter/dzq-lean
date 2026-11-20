@@ -14,10 +14,11 @@ Moves (each PROVED projection-preserving, per-op logged):
      detection, exact-Q verification). Drop the row.
 Iterate to fixed point. Assert deg <= 2 and integrality after every op.
 """
+import os
 import json, gzip, collections, sys
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
-OUT = "/Users/dmitri.arkhipov/bigo-campaign/dzq-t1"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
+OUT = os.path.dirname(__file__)
 with gzip.open(f"{BASE}/residuals.json.gz") as f:
     rows_raw = json.load(f)
 

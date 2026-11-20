@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Attribute multi-r residuals to construction modules; dump them."""
+import os
 import json, gzip, collections
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
 with gzip.open(f"{BASE}/residuals.json.gz") as f:
     res = json.load(f)
 cm = json.load(open(f"{BASE}/construction-map.json"))

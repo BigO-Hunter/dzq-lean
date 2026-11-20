@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Support analysis: which residuals contain each r_j? Are site blocks disjoint?
 Also: are r_i, r_j ever linked by a residual (appearing together)?"""
+import os
 import json, gzip, collections
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
 
 with gzip.open(f"{BASE}/residuals.json.gz") as f:
     res = json.load(f)

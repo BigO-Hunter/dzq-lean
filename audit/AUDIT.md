@@ -1,6 +1,6 @@
 # AUDIT — hyp:RC gap finding, hardened against quartic_4973.tex (Version 4, 2026-11-06)
 
-Source: `~/bigo-campaign/diophantine-zq/upstream/quartic_4973.tex` (719,455 bytes, sha256 of
+Source: `../anatomy/v4/quartic_4973.tex` (719,455 bytes, sha256 of
 companion coefficient table matches README). All line numbers below are line numbers of that file.
 
 ## VERDICT: CONFIRMED-GAP — mechanism revised; deep validity = UNRESOLVABLE-WITHOUT-X

@@ -6,13 +6,14 @@ All moves carry exact per-op proofs:
   - sweep: v := -rest/cv substitutions (verified per consumer with Fractions)
   - drops: row in Q-span of survivors (verified by exact Fraction combination)
 """
+import os
 import json, gzip, sys, collections, subprocess, hashlib, time
 from fractions import Fraction
 from pathlib import Path
 
 sys.set_int_max_str_digits(200000)
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
-OUT = "/Users/dmitri.arkhipov/bigo-campaign/dzq-t1"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
+OUT = os.path.dirname(__file__)
 CAP = 1 << 64
 PRIMES = [(1 << 61) - 1, (1 << 62) - 57, (1 << 63) - 25]
 
@@ -283,7 +284,7 @@ subprocess.run(["cp", f"{OUT}/stacked_residuals.json.gz", str(pkg / "residuals.j
 sha = hashlib.sha256(tl.with_suffix(tl.suffix + ".gz").read_bytes() if False else gzip.open(str(tl) + ".gz", "rb").read()).hexdigest()
 print(f"term-list gz sha256: {sha}", flush=True)
 print("RUN CHECKER:", flush=True)
-r = subprocess.run(["python3", "/Users/dmitri.arkhipov/bigo-campaign/dzq-artifact/checker.py",
+r = subprocess.run(["python3", os.path.join(os.path.dirname(__file__), "..", "artifact", "checker.py"),
                     "--package", str(pkg), "--termlist", str(tl) + ".gz"],
                    capture_output=True, text=True)
 print(r.stdout[-2500:], flush=True)

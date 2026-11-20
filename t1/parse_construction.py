@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Parse construction-map.json: extract every instantiation, module, args.
 Goal: find the conic instances (q_conic13/10/6) and what r-variable each takes."""
+import os
 import json, sys, collections
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
 
 cm = json.load(open(f"{BASE}/construction-map.json"))
 vm = json.load(open(f"{BASE}/variable-map.json"))

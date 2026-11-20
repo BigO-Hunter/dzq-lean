@@ -9,9 +9,10 @@ Classes:
   MULTI - v occurs in >=3 rows and none qualifies as def row (most common:
           v is linear in several rows / only in non-linear monomials)
 """
+import os
 import json, gzip, collections
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
 with gzip.open(f"{BASE}/residuals.json.gz") as f:
     rows_raw = json.load(f)
 rows = [ {tuple(sorted(m)): c for c, m in row} for row in rows_raw ]

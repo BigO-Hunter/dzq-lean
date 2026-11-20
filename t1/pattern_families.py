@@ -3,9 +3,10 @@
 Signature = (sorted coeffs, multiset of monomial degrees). Same signature on
 DIFFERENT variable sets = same shape, different constraints (NOT redundant).
 Also: exact duplicate rows (same monomials+coeffs) and scalar duplicates."""
+import os
 import json, gzip, collections
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
 with gzip.open(f"{BASE}/residuals.json.gz") as f:
     rows_raw = json.load(f)
 rows = [ {tuple(sorted(m)): c for c, m in row} for row in rows_raw ]

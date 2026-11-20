@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Control arms for the ordered elimination + rank of the original system."""
+import os
 import json, gzip, collections, time
 P = (1 << 61) - 1
 
@@ -36,7 +37,7 @@ def rank(rows, label):
     print(f"{label}: rows {len(rows)} rank {len(piv)} dep {dep}  [{time.time()-t0:.1f}s]", flush=True)
 
 orig = [ {tuple(sorted(m)): c for c, m in row}
-         for row in json.load(gzip.open("/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973/residuals.json.gz")) ]
+         for row in json.load(gzip.open(os.path.join(os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973"), "/residuals.json.gz"))) ]
 rank(orig, "original")
 dup = orig + [dict(orig[0])]
 rank(dup, "control dup-row (expect dep=1)")

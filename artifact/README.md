@@ -11,7 +11,7 @@ is **NOT-REACHED** — it is the source arithmetic theorem, which the release sc
 ## Re-run everything
 
 ```bash
-cd ~/bigo-campaign/dzq-artifact
+cd artifact
 
 # 1. acquire (needs gh auth; downloads into dl/, gitignored)
 gh release download research-handoff-2026-11-06-r3 -R elliotglazer/diophantine-z-q \

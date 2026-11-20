@@ -3,12 +3,13 @@
 + correct sparse rank (re-sorting reduction) on original AND swept rows.
 Every op is re-verified post-hoc: new_consumer == cv*old_consumer with v->-rest/cv
 (expanded over exact rationals, asserted integral)."""
+import os
 import json, gzip, collections, sys
 from fractions import Fraction
 
 sys.set_int_max_str_digits(100000)
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
-OUT = "/Users/dmitri.arkhipov/bigo-campaign/dzq-t1"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
+OUT = os.path.dirname(__file__)
 CAP = 1 << 64
 
 with gzip.open(f"{BASE}/residuals.json.gz") as f:

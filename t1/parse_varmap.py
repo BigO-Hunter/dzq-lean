@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """What are the r-variables? Map variable indices -> names/roles from variable-map.json."""
+import os
 import json, collections
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
 vm = json.load(open(f"{BASE}/variable-map.json"))
 print("type:", type(vm).__name__, "len:", len(vm))
 print("sample entries:", json.dumps(vm[:3], indent=1)[:600])

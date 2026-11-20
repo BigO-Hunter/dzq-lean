@@ -24,3 +24,16 @@ Licensed under the Copy-Free/Stays-Free (CFSF) License — see [LICENSE](LICENSE
 - `formal/`: the complete original `dzq-lean-formal` kernel-verification package at source commit `0df81df3aa3c1b74d6964ee967f8ea2f99420d4c`, merged with full history.
 
 Both Lake packages use the git-pinned Mathlib revision `d13f23b723b8a846827a245b89c10fc7d3f11612`; no sibling checkout is required. Run builds from the repository root for analysis and from `formal/` for kernel verification. Optional regeneration scripts in `formal/` accept `DZQ_EXEC=/path/to/dzq-exec`; generated artifacts are already committed, so that external directory is not needed to consume the proofs.
+
+## Recovered DZQ research lanes
+
+- `anatomy/`: source anatomy, compression analysis and ledger tooling.
+- `artifact/`: the independent coefficient-exact checker for quartic-4973, including control arms and canonical artifact generation.
+- `audit/`: the confirmed RC gap analysis and height-seam disclosure.
+- `constructions/`: candidate constructions, counting calculus and re-scoring against the 4973 bar.
+- `exec/`: the final eight-parameter Lambda and its verification.
+- `k2/`: the audit-repair map and citation revisions.
+- `optimize/`: residual-compression and redundancy analysis.
+- `t1/`: the stacked-ledger improvement from 4973 to 4922, with span-rank and control checks.
+
+These are full-history merges of local research repositories, grouped here rather than left as partial standalone notes. Each subdirectory keeps its own artifact boundary. Run any checker or generator from its named lane; T1 resolves anatomy data and its own outputs relative to this umbrella.

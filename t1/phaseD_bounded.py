@@ -2,11 +2,12 @@
 """Bounded elimination sweep: only ops whose worst new coefficient stays < 2^64.
 Tracks pole-block variables (final space, E7-connected) separately for T4.
 Also runs mod-p rank on the swept system for span-redundancy drops."""
+import os
 import json, gzip, collections, sys
 
 sys.set_int_max_str_digits(100000)
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
-OUT = "/Users/dmitri.arkhipov/bigo-campaign/dzq-t1"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
+OUT = os.path.dirname(__file__)
 CAP = 1 << 64
 
 with gzip.open(f"{BASE}/residuals.json.gz") as f:

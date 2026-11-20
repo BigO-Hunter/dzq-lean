@@ -2,10 +2,11 @@
 """Finalize: expand Sum R'^2 exactly, write canonical term list + variant package.
 Usage: finalize.py <residuals.json.gz> <variant_dir_name> [vars.json]
 """
+import os
 import json, gzip, sys, collections, hashlib, subprocess
 from pathlib import Path
 
-SRC = "/Users/dmitri.arkhipov/bigo-campaign/dzq-t1"
+SRC = os.path.dirname(__file__)
 res_path = sys.argv[1]
 name = sys.argv[2]
 vars_path = sys.argv[3] if len(sys.argv) > 3 else None
@@ -51,4 +52,4 @@ n = len(rows)
 (pkg / "weights.json").write_text(json.dumps([1] * n))
 (pkg / "variable-map.json").write_text(json.dumps(list(range(max(allv) + 1))))
 print(f"variant package at {pkg} (rows={n}, varmap identity up to {max(allv)})")
-print("checker cmd: python3 ~/bigo-campaign/dzq-artifact/checker.py --package " + str(pkg) + " --termlist " + str(tl) + ".gz")
+print("checker cmd: python3 ../artifact/checker.py --package " + str(pkg) + " --termlist " + str(tl) + ".gz")

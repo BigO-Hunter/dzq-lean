@@ -1,6 +1,6 @@
 # REPAIRS.md — audit-repair pass on FRONTIER.md (post 91f9fb5/b4c164b)
 
-Audit: ~/bigo-campaign/dzq-k2-audit/ (AUDIT_K2.md + CORRECTIONS.md), verdict
+Audit: ../audit/ (AUDIT_K2.md + CORRECTIONS.md), verdict
 9 VERIFIED / 5 GAP-NAMED / 0 REFUTED. Author applied all owed repairs; history
 preserved (this commit is additive; no silent deletion — every replaced passage
 is named here with its disposition). **Rebuttals: none** — all six mechanical

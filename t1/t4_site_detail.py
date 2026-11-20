@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Per-site pole analysis in FINAL space: rows touching pole locals, their
 shapes, linear-in-v candidates, and cross-consumption."""
+import os
 import json, gzip, collections
 
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
 with gzip.open(f"{BASE}/residuals.json.gz") as f:
     res = json.load(f)
 cm = json.load(open(f"{BASE}/construction-map.json"))
@@ -56,4 +57,4 @@ for v in d["locals"]:
     lin_rows = [(i, c) for i, c in lins if c != 0]
     print(f"  x{v}: in {len(rows_v)} rows; linear in {lin_rows}")
 
-json.dump(report, open("/Users/dmitri.arkhipov/bigo-campaign/dzq-t1/site_pole_rows.json", "w"))
+json.dump(report, open(os.path.join(os.path.dirname(__file__), "/site_pole_rows.json"), "w"))

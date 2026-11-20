@@ -3,11 +3,12 @@
 Column order: ascending initial column degree (static min-degree approximation).
 Reports rank + dependent rows with multiplier vectors; then exact-Q lifts.
 Writes ordered_deps.json."""
+import os
 import json, gzip, sys, collections, time
 from fractions import Fraction
 
 sys.set_int_max_str_digits(200000)
-OUT = "/Users/dmitri.arkhipov/bigo-campaign/dzq-t1"
+OUT = os.path.dirname(__file__)
 P = (1 << 61) - 1
 
 rows = [ {tuple(sorted(m)): c for c, m in row} for row in json.load(gzip.open(f"{OUT}/variantB_residuals.json.gz")) ]

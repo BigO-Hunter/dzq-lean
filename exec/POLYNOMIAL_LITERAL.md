@@ -117,7 +117,7 @@ covering exactly the primes that a denominator can occupy.
 ## 6. Reproduce
 
 ```bash
-cd ~/bigo-campaign/dzq-exec
+cd exec
 python3 hilbert.py          # Hilbert symbols, (5,2) control arm
 python3 e_exc.py            # E_exc, class coverage, residue scan to 3000
 python3 perprime.py         # the nine constant rows + F_p term lists

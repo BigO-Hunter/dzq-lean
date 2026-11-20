@@ -6,12 +6,13 @@ combined across primes, rationally reconstructed (Wang), then the candidate
 dependency is PROVEN by exact Fraction expansion: sum x_i R_i == 0 over Q with
 x_d = 1. Rows failing reconstruction/proof stay in the system (UNVERIFIED).
 """
+import os
 import json, gzip, sys, collections
 from fractions import Fraction
 
 sys.set_int_max_str_digits(200000)
-BASE = "/Users/dmitri.arkhipov/bigo-campaign/dzq-anatomy/v4/quartics/quartic-4973"
-OUT = "/Users/dmitri.arkhipov/bigo-campaign/dzq-t1"
+BASE = os.path.join(os.path.dirname(__file__), "..", "anatomy", "v4", "quartics", "quartic-4973")
+OUT = os.path.dirname(__file__)
 PRIMES = [(1 << 61) - 1, (1 << 62) - 57, (1 << 63) - 25, (1 << 31) - 1]
 
 def load_rows():
