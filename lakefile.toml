@@ -5,8 +5,8 @@ defaultTargets = ["Dzq"]
 [[lean_lib]]
 name = "Dzq"
 
-# Reuse the already-built Mathlib from the staircase-port campaign.
-# Path dep => no clone, no 8GB rebuild.
+# Mathlib is pinned to a git revision (see lake-manifest.json); no sibling
+# checkout or pre-built Mathlib is required.
 [[require]]
 name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4.git"

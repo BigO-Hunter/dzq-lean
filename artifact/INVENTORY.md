@@ -1,7 +1,6 @@
 # INVENTORY — quartic-4973-version-4 (and handoff r3)
 
-Acquired 2026-11-06 from `github.com/elliotglazer/diophantine-z-q` with `gh release download`
-(authenticated as `darkhipo`). Every downloaded asset was checked against the release's own
+Acquired 2026-11-06 from `github.com/elliotglazer/diophantine-z-q` with `gh release download`. Every downloaded asset was checked against the release's own
 `SHA256SUMS`; both ZIP checksums matched.
 
 ## What was acquired

@@ -2,7 +2,7 @@
 Statement.lean — trusted-statement DRAFT for the bigospeedrun race
 "Z is Diophantine in Q" (row z-diophantine-in-q).
 
-Pattern follows darkhipo/omr-statement (the #145 house pattern):
+Statement conventions:
 explicit binders, `autoImplicit false`, no `sorry`, definitions transcribed
 from the race statement. NOT COMPILED — no Lean/Mathlib toolchain was run
 in this window; the marking below is honest. Every non-definitional claim

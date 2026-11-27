@@ -2,7 +2,7 @@
 
 **Every "EXISTS" below was checked by `#check` in a compiled Lean file, not inferred.**
 Toolchain: `leanprover/lean4:v4.34.1`, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`
-(the staircase-port campaign's built Mathlib, reused by path dependency — no rebuild).
+(git-pinned Mathlib revision; see lake-manifest.json — no sibling checkout required).
 
 Status of the harness in this directory: **COMPILED, zero `sorry`**
 (`lake build` → *1387 jobs, Build completed successfully*).

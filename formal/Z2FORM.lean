@@ -5,8 +5,8 @@ set_option maxRecDepth 20000
 /-!
 # Z2FORM.lean — the explicit exists-3 formula for Z_(2)
 
-Artifact of lane `dzq-c1` (`G2_REDERIVATION.md` §1), machine-verified in Python there and in
-lane `dzq-exec`.  The formula, exactly as written in the derivation doc:
+Artifact of the derivation lane (`G2_REDERIVATION.md` §1), machine-verified in Python there and in
+the exec lane.  The formula, exactly as written in the derivation doc:
 
     x ∈ Z_(2) ⟺ x = 0 ∨ ∃ x1 x2 x3 : Q,
       10 * x^2 * (7 + 5*x1 - 5*x1^2 - 2*x2^2 - 2*x2*x3 + 2*x3^2) - 1 = 0

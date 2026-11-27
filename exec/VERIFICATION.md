@@ -1,6 +1,6 @@
 # VERIFICATION.md — independent machine verification of G1_FREEZING.md §3
 
-Lane `dzq-exec`. Inputs read **read-only** from `../dzq-c1/` at commit fcb4477 (G1_FREEZING.md,
+Lane `dzq-exec`. Inputs read **read-only** from the derivation lane (not vendored here) at commit fcb4477 (G1_FREEZING.md,
 G2_REDERIVATION.md, POLYNOMIAL.md, COUNTS.md, CATCHES.md, sun2026.txt). Nothing here was derived
 by the derivation lane; every number below was recomputed from the definitions.
 

@@ -1,6 +1,6 @@
 # dzq-lean-formal
 
-Lean kernel verification of the DZQ artifacts (lane 2026-11-06): `FORMAL_REPORT.md` lists what is kernel-checked; `CERT.lean`/`Z2FORM.lean` carry the verified core; `LEAVES.lean` + `gen_leaves.py` are the generated-leaf layer; `axcheck.py` audits axioms. Toolchain v4.34.1 + Mathlib (packages symlinked, never rebuilt).
+Lean kernel verification of the DZQ artifacts (lane 2026-11-06): `FORMAL_REPORT.md` lists what is kernel-checked; `CERT.lean`/`Z2FORM.lean` carry the verified core; `LEAVES.lean` + `gen_leaves.py` are the generated-leaf layer; `axcheck.py` audits axioms. Toolchain v4.34.1 + Mathlib pinned at a git revision (see lake-manifest.json).
 
 Status: kernel-checked list complete per the report; leaf propagation open.
 
@@ -8,7 +8,7 @@ Status: kernel-checked list complete per the report; leaf propagation open.
 
 Public evidence: the Lean kernel-verified core of the DZQ artifacts, with the kernel-checked list and reproducible generators.
 
-[BigO-Hunter](https://github.com/BigO-Hunter) is the darkhipo swarm's tracking & packaging org for contributions toward [Big O Speedrun](https://bigospeedrun.com) — a companion, never the project. Org story: [profile](https://github.com/BigO-Hunter/.github) · [bigo-hunter.github.io](https://bigo-hunter.github.io).
+[BigO-Hunter](https://github.com/BigO-Hunter) is the tracking & packaging org for [Big O Speedrun](https://bigospeedrun.com) contributions · [org profile](https://github.com/BigO-Hunter/.github) · [bigo-hunter.github.io](https://bigo-hunter.github.io).
 
 ## What work can be done here
 

@@ -1,6 +1,6 @@
 # CERT_NEEDS — what a sorry-free Lean certificate needs, per candidate
 
-Mathlib checked locally at `bigo-campaign/sp-compose/.lake/packages/mathlib`, rev
+Mathlib checked at rev
 `d13f23b723b8a846827a245b89c10fc7d3f11612` (grep counts below are from that checkout, so they are
 measurements, not guesses).
 

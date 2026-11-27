@@ -1,9 +1,8 @@
 # FORMAL_REPORT.md — Lean kernel verification of the DZQ artifacts
 
-Lane `dzq-lean-formal`, 2026-11-06. Toolchain: Lean **v4.34.1** + Mathlib (packages symlinked
-from `~/bigo-campaign/staircase-port/.lake/packages`, never rebuilt). Sources read read-only:
-`~/bigo-campaign/dzq-c1/` (derivation) and `~/bigo-campaign/dzq-exec/` (executor, verifier
-#165). Project: `~/bigo-campaign/dzq-lean-formal/` (git, committed per stage).
+Lane `dzq-lean-formal`, 2026-11-06. Toolchain: Lean **v4.34.1** + Mathlib pinned at rev
+`d13f23b723b8a846827a245b89c10fc7d3f11612` (git dependency; see lake-manifest.json). Sources read read-only:
+the derivation lane and the exec lane (executor/verifier). Project: this `formal/` package (git, committed per stage).
 
 ## 1. What is kernel-checked (complete list)
 
