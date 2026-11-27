@@ -1,0 +1,51 @@
+name: Lean proof
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certifiability-analysis:
+    name: Root certifiability analysis (Dzq)
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: 2
+    steps:
+      - name: Check out the umbrella
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Build the Lean development
+        uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6 # v1
+        with:
+          lake-package-directory: .
+          build: "true"
+          test: "false"
+          lint: "false"
+          use-mathlib-cache: "true"
+      - name: Axiom probe on the analysis theorems
+        run: lake env lean AxCheck.lean
+
+  formal-kernel-cert:
+    name: formal/ kernel verification (CERT = Z2FORM + LEAVES assembly)
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: 2
+    steps:
+      - name: Check out the umbrella
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Build the Lean development
+        uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6 # v1
+        with:
+          lake-package-directory: formal
+          build: "true"
+          test: "false"
+          lint: "false"
+          use-mathlib-cache: "true"
+      # formal/verify_lean_leaves.py is not run: the vendored exec/F_recipe.json
+      # is the final-Lambda recipe and hash-mismatches the original formal leaves
+      # (34 failures measured locally); the original dzq-exec lane is not vendored.
