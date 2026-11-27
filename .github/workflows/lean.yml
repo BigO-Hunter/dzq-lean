@@ -38,6 +38,13 @@ jobs:
     steps:
       - name: Check out the umbrella
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      # formal/.lake/packages is a committed symlink to the campaign host's
+      # sibling staircase-port checkout; on a fresh runner it dangles. Replace
+      # it with a real directory so Lake fetches the pinned deps itself.
+      - name: Replace the campaign-host packages symlink with a real directory
+        run: |
+          rm formal/.lake/packages
+          mkdir formal/.lake/packages
       - name: Build the Lean development
         uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6 # v1
         with:
