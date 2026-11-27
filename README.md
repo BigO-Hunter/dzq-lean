@@ -6,7 +6,7 @@ Status: analysis complete; the formalizable fragments are kernel-verified in `fo
 
 ## Why this repo is up
 
-Public design input: the certifiability analysis (which Mathlib claims actually resolve, checked by #check) and the gap list for the DZQ family.
+Private campaign umbrella: the full-history memory of the DZQ ("ℤ is Diophantine in ℚ") campaign — certifiability analysis (which Mathlib claims actually resolve, checked by `#check`), the gap list, kernel verification in `formal/`, and the recovered research lanes including unpublished improvements (`t1/` 4973→4922, `exec/` Lambda). The **public face** of the campaign is [BigO-Hunter/z-diophantine-research](https://github.com/BigO-Hunter/z-diophantine-research); the visibility boundary is deliberate — this umbrella holds lanes the public shelf does not carry.
 
 [BigO-Hunter](https://github.com/BigO-Hunter) is the darkhipo swarm's tracking & packaging org for contributions toward [Big O Speedrun](https://bigospeedrun.com) — a companion, never the project. Org story: [profile](https://github.com/BigO-Hunter/.github) · [bigo-hunter.github.io](https://bigo-hunter.github.io).
 
