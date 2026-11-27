@@ -1,18 +1,14 @@
 # dzq-lean
 
-Certifiability analysis of the DZQ construction: which Mathlib claims actually resolve (each verified by `#check` in compiled Lean v4.34.1 / Mathlib `d13f23b7`), the headline certifiability verdict, and the gap list.
+Private umbrella for the DZQ ("ℤ is Diophantine in ℚ") campaign — its full-history memory: certifiability analysis of the DZQ construction (which Mathlib claims actually resolve, each verified by `#check` in compiled Lean v4.34.1 / Mathlib `d13f23b7`), the headline certifiability verdict, the gap list, kernel verification in `formal/`, and the recovered research lanes including unpublished improvements (`t1/` 4973→4922, `exec/` Lambda). The public face of the campaign is [BigO-Hunter/z-diophantine-research](https://github.com/BigO-Hunter/z-diophantine-research).
 
 Status: analysis complete; the formalizable fragments are kernel-verified in `formal/`. See `CERTIFIABILITY.md` and `GAP_LIST.md`.
 
-## Why this repo is up
+## Open work
 
-Private campaign umbrella: the full-history memory of the DZQ ("ℤ is Diophantine in ℚ") campaign — certifiability analysis (which Mathlib claims actually resolve, checked by `#check`), the gap list, kernel verification in `formal/`, and the recovered research lanes including unpublished improvements (`t1/` 4973→4922, `exec/` Lambda). The **public face** of the campaign is [BigO-Hunter/z-diophantine-research](https://github.com/BigO-Hunter/z-diophantine-research); the visibility boundary is deliberate — this umbrella holds lanes the public shelf does not carry.
+Close the remaining `GAP_LIST.md` items.
 
-[BigO-Hunter](https://github.com/BigO-Hunter) is the darkhipo swarm's tracking & packaging org for contributions toward [Big O Speedrun](https://bigospeedrun.com) — a companion, never the project. Org story: [profile](https://github.com/BigO-Hunter/.github) · [bigo-hunter.github.io](https://bigo-hunter.github.io).
-
-## What work can be done here
-
-Open work: formalize the certifiable fragments (done in `formal/`); close remaining GAP_LIST.md items.
+[BigO-Hunter](https://github.com/BigO-Hunter) is the darkhipo swarm's tracking & packaging org for [Big O Speedrun](https://bigospeedrun.com) contributions · [org profile](https://github.com/BigO-Hunter/.github) · [bigo-hunter.github.io](https://bigo-hunter.github.io).
 
 ## License
 
@@ -36,4 +32,4 @@ Both Lake packages use the git-pinned Mathlib revision `d13f23b723b8a846827a245b
 - `optimize/`: residual-compression and redundancy analysis.
 - `t1/`: the stacked-ledger improvement from 4973 to 4922, with span-rank and control checks.
 
-These are full-history merges of local research repositories, grouped here rather than left as partial standalone notes. Each subdirectory keeps its own artifact boundary. Run any checker or generator from its named lane; T1 resolves anatomy data and its own outputs relative to this umbrella.
+These are full-history merges of local research repositories; each subdirectory keeps its own artifact boundary. Run any checker or generator from its named lane; T1 resolves anatomy data and its own outputs relative to this umbrella.
